@@ -1,7 +1,7 @@
 defaultNamespace: default
 helm:
   releaseName: milvus
-  chart: dp.apps.rancher.io/charts/milvus
+  chart: https://dp.apps.rancher.io/charts/milvus
   helmSecretName: basic-auth-secret
   imagePullSecrets:
     - name: application-collection
