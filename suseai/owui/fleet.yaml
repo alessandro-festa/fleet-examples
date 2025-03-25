@@ -1,0 +1,33 @@
+namespace: default
+
+# Custom helm options
+helm:
+  # The release name to use. If empty a generated release name will be used
+  releaseName: open-webui
+
+  # The directory of the chart in the repo.  Also any valid go-getter supported
+  # URL can be used there is specify where to download the chart from.
+  # If repo below is set this value if the chart name in the repo
+  chart: "open-webui"
+
+  # An https to a valid Helm repository to download the chart from
+  repo: "oci://dp.apps.rancher.io/charts/"
+
+  # Used if repo is set to look up the version of the chart
+  version: "5.16.0"
+
+  # Force recreate resource that can not be updated
+  force: false
+
+  # How long for helm to wait for the release to be active. If the value
+  # is less that or equal to zero, we will not wait in Helm
+  timeoutSeconds: 0
+
+  # Path to any values files that need to be passed to helm during install.
+  valuesFiles:
+    - owui_custom_overrides.yaml
+# dependsOn allows you to configure dependencies to other bundles. The current
+# bundle will only be deployed, after all dependencies are deployed and in a
+# Ready state.
+dependsOn:
+ - name: milvus
