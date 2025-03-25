@@ -19,7 +19,7 @@ helm:
   version: "5.16.0"
 
   # Force recreate resource that can not be updated
-  force: false
+  force: true
 
   # How long for helm to wait for the release to be active. If the value
   # is less that or equal to zero, we will not wait in Helm
@@ -29,6 +29,6 @@ helm:
   values:
     replicas: 1
 
-  # Path to any values files that need to be passed to helm during install.
-  valuesFiles:
-    - owui_custom_overrides.yaml
+  # # Path to any values files that need to be passed to helm during install.
+  # valuesFiles:
+  #   - owui_custom_overrides.yaml
