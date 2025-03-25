@@ -3,7 +3,7 @@
 namespace: suseai
 helm:
   # The release name to use. If empty a generated release name will be used
-  # releaseName: ""
+  releaseName: "milvus"
 
   helmSecretName: basic-auth-secret
 
@@ -13,10 +13,10 @@ helm:
   chart: ""
 
   # An https to a valid Helm repository to download the chart from
-  repo: "oci://dp.apps.rancher.io/charts/milvus"
+  repo: ""
 
   # Used if repo is set to look up the version of the chart
-  version: "4.2.2"
+  version: ""
 
   # Force recreate resource that can not be updated
   force: false
