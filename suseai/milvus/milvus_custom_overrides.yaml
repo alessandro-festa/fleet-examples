@@ -2,6 +2,13 @@ global:
   imagePullSecrets:
   - application-collection
   namespace: suseai
+image:
+  registry: dp.apps.rancher.io
+  repository: containers/milvus
+  tag: 2.4.6
+  # repository: ghcr.io/open-webui/open-webui
+  # tag: 0.5.10
+  pullPolicy: IfNotPresent
 cluster:
   enabled: False
 standalone:
