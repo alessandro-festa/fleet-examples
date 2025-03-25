@@ -1,7 +1,4 @@
 defaultNamespace: default
-global:
-  imagePullSecrets:
-  - application-collection
 helm:
   releaseName: milvus
   chart: oci://dp.apps.rancher.io/charts/milvus
