@@ -1,5 +1,6 @@
 # This file and all contents in it are OPTIONAL.
 # Custom helm options
+namespace: suseai
 helm:
   # The release name to use. If empty a generated release name will be used
   releaseName: open-webui
