@@ -1,3 +1,5 @@
+# This file and all contents in it are OPTIONAL.
+
 namespace: default
 
 # Custom helm options
@@ -10,8 +12,11 @@ helm:
   # If repo below is set this value if the chart name in the repo
   chart: ""
 
+  # An https to a valid Helm repository to download the chart from
+  repo: ""
+
   # Used if repo is set to look up the version of the chart
-  version: "4.2.2"
+  version: ""
 
   # Force recreate resource that can not be updated
   force: false
@@ -19,6 +24,10 @@ helm:
   # How long for helm to wait for the release to be active. If the value
   # is less that or equal to zero, we will not wait in Helm
   timeoutSeconds: 0
+
+  # Custom values that will be passed as values.yaml to the installation
+  values:
+    replicas: 1
 
   # Path to any values files that need to be passed to helm during install.
   valuesFiles:

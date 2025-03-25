@@ -1,5 +1,6 @@
-namespace: default
+# This file and all contents in it are OPTIONAL.
 
+namespace: default
 
 # Custom helm options
 helm:
@@ -11,8 +12,11 @@ helm:
   # If repo below is set this value if the chart name in the repo
   chart: ""
 
+  # An https to a valid Helm repository to download the chart from
+  repo: ""
+
   # Used if repo is set to look up the version of the chart
-  version: "5.16.0"
+  version: ""
 
   # Force recreate resource that can not be updated
   force: false
@@ -21,10 +25,10 @@ helm:
   # is less that or equal to zero, we will not wait in Helm
   timeoutSeconds: 0
 
+  # Custom values that will be passed as values.yaml to the installation
+  values:
+    replicas: 1
+
   # Path to any values files that need to be passed to helm during install.
   valuesFiles:
-    - owui_custom_overrides.yaml
-
-dependsOn:
- - name: milvus
-
+    - milvus_custom_overrides.yaml
