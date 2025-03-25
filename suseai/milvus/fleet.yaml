@@ -1,4 +1,4 @@
-defaultNamespace: default
+defaultNamespace: fleet-local
 helm:
   chart: oci://dp.apps.rancher.io/charts/milvus
   # helmSecretName: basic-auth-secret

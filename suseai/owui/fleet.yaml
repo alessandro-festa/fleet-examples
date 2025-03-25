@@ -1,6 +1,6 @@
 # This file and all contents in it are OPTIONAL.
 
-namespace: default
+namespace: fleet-local
 
 # Custom helm options
 helm:
