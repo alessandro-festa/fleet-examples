@@ -3,7 +3,7 @@
 namespace: suseai
 helm:
   # The release name to use. If empty a generated release name will be used
-  releaseName: milvus
+  # releaseName: ""
 
   helmSecretName: basic-auth-secret
 
