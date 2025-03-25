@@ -1,0 +1,4 @@
+helm:
+  # Path to any values files that need to be passed to helm during install.
+  valuesFiles:
+    - milvus_custom_overrides.yaml
