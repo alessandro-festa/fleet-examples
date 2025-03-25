@@ -1,5 +1,7 @@
 # This file and all contents in it are OPTIONAL.
 
+# The namespace this chart will be installed and restricted to,
+# if not specified the chart will be installed to "default"
 namespace: default
 
 # Custom helm options
@@ -28,7 +30,7 @@ helm:
   # Custom values that will be passed as values.yaml to the installation
   values:
     replicas: 1
-
+    
   # Path to any values files that need to be passed to helm during install.
   valuesFiles:
     - milvus_custom_overrides.yaml
