@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: Service
+metadata:
+  {{- include "renderAnnotations" (dict "additionalAnnotations" .Values.headlessService.annotations "context" $) | indent 2 }}
+  {{- include "renderLabels" (dict "component" "main" "context" $) | indent 2 }}
+  name: {{ include "fullName" (dict "suffix" "headless" "context" $) }}
+  namespace: {{ .Release.Namespace | quote }}
+spec:
+  {{- include "renderValues" (dict "omitKeys" (list "enabled" "annotations" "ports" "selector") "values" .Values.headlessService) | indent 2 }}
+  ports: {{- range $key, $value := .Values.headlessService.ports }}
+    {{- if and $key (coalesce $value (get $.Values.containerPorts $key)) }}
+    - name: {{ $key }}
+      port: {{ coalesce $value (get $.Values.containerPorts $key) }}
+      {{- if get $.Values.containerPorts $key }}
+      targetPort: {{ $key }}
+      {{- end }}
+    {{- end }}
+  {{- end }}
+  selector: {{- include "matchLabels" (dict "additionalLabels" .Values.podTemplates.labels "component" "main" "context" $) | nindent 4 }}

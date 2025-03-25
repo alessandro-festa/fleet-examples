@@ -1,0 +1,17 @@
+annotations:
+  helm.sh/images: |
+    - image: dp.apps.rancher.io/containers/apache-kafka:3.9.0
+      name: apache-kafka
+    - image: dp.apps.rancher.io/containers/bci-busybox:15.6
+      name: bci-busybox
+apiVersion: v2
+appVersion: 3.9.0
+description: Apache Kafka is a high-performance data structure server that primarily
+  serves key/value workloads. It supports a wide range of native structures and an
+  extensible plugin system for adding new data structures and access patterns.
+home: https://apps.rancher.io/applications/apache-kafka
+maintainers:
+- name: SUSE LLC
+  url: https://www.suse.com/
+name: apache-kafka
+version: 0.2.0

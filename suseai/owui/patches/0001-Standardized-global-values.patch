@@ -1,0 +1,17 @@
+diff --git a/packages/open-webui/0.5/values.yaml b/packages/open-webui/0.5/values.yaml
+index dcaaf72..314a9d3 100644
+--- a/packages/open-webui/0.5/values.yaml
++++ b/packages/open-webui/0.5/values.yaml
+@@ -1,3 +1,9 @@
++global:
++  # -- Global override for container image registry
++  imageRegistry: ""
++  # -- Global override for container image registry pull secrets
++  imagePullSecrets: []
++
+ nameOverride: ""
+ 
+ ollama:
+-- 
+2.43.0
+

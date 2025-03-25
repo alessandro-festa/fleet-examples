@@ -1,0 +1,75 @@
+diff --git a/packages/minio/0/templates/deployment.yaml b/packages/minio/0/templates/deployment.yaml
+index d7b405a..555ae9f 100644
+--- a/packages/minio/0/templates/deployment.yaml
++++ b/packages/minio/0/templates/deployment.yaml
+@@ -67,7 +67,7 @@ spec:
+       {{- end }}
+       containers:
+         - name: {{ .Chart.Name }}
+-          image: "{{ .Values.image.repository }}:{{ .Values.image.tag }}"
++          image: "{{ with (coalesce .Values.global.imageRegistry .Values.image.registry) }}{{ . }}/{{ end }}{{ .Values.image.repository }}:{{ .Values.image.tag }}"
+           imagePullPolicy: {{ .Values.image.pullPolicy }}
+           command:
+             - "/bin/sh"
+diff --git a/packages/minio/0/templates/post-job.yaml b/packages/minio/0/templates/post-job.yaml
+index 5feb783..ea65118 100644
+--- a/packages/minio/0/templates/post-job.yaml
++++ b/packages/minio/0/templates/post-job.yaml
+@@ -88,7 +88,7 @@ spec:
+       {{- if .Values.policies }}
+       initContainers:
+         - name: minio-make-policy
+-          image: "{{ .Values.mcImage.repository }}:{{ .Values.mcImage.tag }}"
++          image: "{{ with (coalesce .Values.global.imageRegistry .Values.mcImage.registry) }}{{ . }}/{{ end }}{{ .Values.mcImage.repository }}:{{ .Values.mcImage.tag }}"
+           {{- if .Values.makePolicyJob.securityContext.enabled }}
+           securityContext:
+             runAsUser: {{ .Values.makePolicyJob.securityContext.runAsUser }}
+@@ -122,7 +122,7 @@ spec:
+       containers:
+         {{- if .Values.buckets }}
+         - name: minio-make-bucket
+-          image: "{{ .Values.mcImage.repository }}:{{ .Values.mcImage.tag }}"
++          image: "{{ with (coalesce .Values.global.imageRegistry .Values.mcImage.registry) }}{{ . }}/{{ end }}{{ .Values.mcImage.repository }}:{{ .Values.mcImage.tag }}"
+           {{- if .Values.makeBucketJob.securityContext.enabled }}
+           securityContext:
+             runAsUser: {{ .Values.makeBucketJob.securityContext.runAsUser }}
+@@ -155,7 +155,7 @@ spec:
+         {{- end }}
+         {{- if .Values.users }}
+         - name: minio-make-user
+-          image: "{{ .Values.mcImage.repository }}:{{ .Values.mcImage.tag }}"
++          image: "{{ with (coalesce .Values.global.imageRegistry .Values.mcImage.registry) }}{{ . }}/{{ end }}{{ .Values.mcImage.repository }}:{{ .Values.mcImage.tag }}"
+           {{- if .Values.makeUserJob.securityContext.enabled }}
+           securityContext:
+             runAsUser: {{ .Values.makeUserJob.securityContext.runAsUser }}
+@@ -188,7 +188,7 @@ spec:
+         {{- end }}
+         {{- if .Values.customCommands }}
+         - name: minio-custom-command
+-          image: "{{ .Values.mcImage.repository }}:{{ .Values.mcImage.tag }}"
++          image: "{{ with (coalesce .Values.global.imageRegistry .Values.mcImage.registry) }}{{ . }}/{{ end }}{{ .Values.mcImage.repository }}:{{ .Values.mcImage.tag }}"
+           {{- if .Values.customCommandJob.securityContext.enabled }}
+           securityContext:
+             runAsUser: {{ .Values.customCommandJob.securityContext.runAsUser }}
+@@ -221,7 +221,7 @@ spec:
+         {{- end }}
+         {{- if .Values.svcaccts }}
+         - name: minio-make-svcacct
+-          image: "{{ .Values.mcImage.repository }}:{{ .Values.mcImage.tag }}"
++          image: "{{ with (coalesce .Values.global.imageRegistry .Values.mcImage.registry) }}{{ . }}/{{ end }}{{ .Values.mcImage.repository }}:{{ .Values.mcImage.tag }}"
+           {{- if .Values.makeServiceAccountJob.securityContext.enabled }}
+           securityContext:
+             runAsUser: {{ .Values.makeServiceAccountJob.securityContext.runAsUser }}
+diff --git a/packages/minio/0/templates/statefulset.yaml b/packages/minio/0/templates/statefulset.yaml
+index 051f17b..64f202c 100644
+--- a/packages/minio/0/templates/statefulset.yaml
++++ b/packages/minio/0/templates/statefulset.yaml
+@@ -95,7 +95,7 @@ spec:
+       {{- end }}
+       containers:
+         - name: {{ .Chart.Name }}
+-          image: {{ .Values.image.repository }}:{{ .Values.image.tag }}
++          image: {{ with (coalesce .Values.global.imageRegistry .Values.image.registry) }}{{ . }}/{{ end }}{{ .Values.image.repository }}:{{ .Values.image.tag }}
+           imagePullPolicy: {{ .Values.image.pullPolicy }}
+           command: [
+             "/bin/sh",

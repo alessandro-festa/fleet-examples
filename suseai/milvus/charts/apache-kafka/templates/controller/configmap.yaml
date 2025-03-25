@@ -1,0 +1,23 @@
+{{- $component := "controller" }}
+{{- $configMap := .Values.controller.configMap }}
+{{- if eq (include "templateToBoolean" (dict "template" $configMap.enabled "context" $)) "true" }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  {{- include "renderAnnotations" . | indent 2 }}
+  {{- include "renderLabels" (dict "component" $component "context" $) | indent 2 }}
+  name: {{ include "fullName" (dict "suffix" $component "context" $) }}
+  namespace: {{ .Release.Namespace | quote }}
+data:
+  {{- range $configMapName, $configMapValue := $configMap }}
+  {{- if and $configMapName (ne $configMapName "enabled") $configMapValue }}
+  {{- if and (not (kindIs "string" $configMapValue)) (eq (include "templateToBoolean" (dict "template" $configMapValue.enabled "context" $)) "true") $configMapValue.value }}
+  {{ tpl $configMapName $ }}: |
+    {{- tpl $configMapValue.value $ | nindent 4 }}
+  {{- else if kindIs "string" $configMapValue }}
+  {{ tpl $configMapName $ }}: |
+    {{- tpl $configMapValue $ | indent 4 }}
+  {{- end }}
+  {{- end }}
+  {{- end }}
+{{- end }}

@@ -1,0 +1,124 @@
+{{- if .Values.statefulset.enabled }}
+apiVersion: apps/v1
+kind: StatefulSet
+metadata:
+  {{- include "renderAnnotations" . | indent 2 }}
+  {{- include "renderLabels" (dict "component" "main" "context" $) | indent 2 }}
+  name: {{ include "fullName" . }}
+  namespace: {{ .Release.Namespace | quote }}
+spec:
+  {{- $statefulset := .Values.statefulset }}
+  {{- $_ := set $statefulset "replicas" (coalesce $statefulset.replicas .Values.replicaCount) }}
+  {{- $_ := set $statefulset "serviceName" (coalesce $statefulset.serviceName (include "fullName" (dict "suffix" "headless" "context" $))) }}
+  {{- include "renderValues" (dict "omitKeys" (list "enabled" "annotations" "labels" "selector") "values" $statefulset) | indent 2 }}
+  selector:
+    matchLabels: {{- include "matchLabels" (dict "additionalLabels" .Values.podTemplates.labels "component" "main" "context" $) | nindent 6 }}
+  {{- if not $statefulset.template }}
+  template:
+    metadata:
+      {{- $annotations := .Values.podTemplates.annotations }}
+      {{- if and .Values.metrics.enabled .Values.metrics.annotations }}
+      {{- $annotations = merge $annotations .Values.metrics.annotations }}
+      {{- end }}
+      {{- include "renderAnnotations" (dict "additionalAnnotations" $annotations "context" $) | indent 8 }}
+      {{- include "renderLabels" (dict "additionalLabels" .Values.podTemplates.labels "component" "main" "context" $) | indent 8 }}
+    spec:
+      {{- $podTemplates := .Values.podTemplates }}
+      {{- $_ := set $podTemplates "imagePullSecrets" (include "imagePullSecrets" (concat $podTemplates.imagePullSecrets .Values.global.imagePullSecrets) | fromYamlArray) }}
+      {{- $_ := set $podTemplates "serviceAccountName" (coalesce $podTemplates.serviceAccountName (include "serviceAccountName" $)) }}
+      {{- tpl (include "renderValues" (dict "omitKeys" (list "labels" "annotations" "initContainers" "containers" "volumes") "values" $podTemplates)) $ | indent 6 }}
+      {{- if $podTemplates.initContainers }}
+      initContainers:
+        {{- range $containerName, $container := $podTemplates.initContainers }}
+        {{- if and $container $container.enabled }}
+        {{- $image := get $.Values.images $containerName }}
+        {{- $_ := set $image "registry" (coalesce $.Values.global.imageRegistry $image.registry) }}
+        {{- $_ := set $container "image" (coalesce $container.image (include "image" $image)) }}
+        {{- $_ := set $container "imagePullPolicy" (coalesce $container.imagePullPolicy $image.pullPolicy) }}
+        - name: {{ include "containerName" $containerName }}
+          {{- tpl (include "renderValues" (dict "omitKeys" (list "enabled" "name" "env" "volumeMounts") "values" $container)) $ | indent 10 }}
+          {{- include "renderContainerEnvValues" (dict "envValues" $container.env "context" $) | nindent 10 }}
+          {{- if $container.volumeMounts }}
+          volumeMounts:
+            {{- range $volumeMountName, $volumeMount := $container.volumeMounts }}
+            {{- if and $volumeMount (eq (include "templateToBoolean" (dict "template" $volumeMount.enabled "context" $)) "true") }}
+            - name: {{ tpl $volumeMountName $ }}
+              {{- tpl (include "renderValues" (dict "omitKeys" (list "enabled" "name") "values" $volumeMount)) $ | indent 14 }}
+            {{- end }}
+            {{- end }}
+          {{- end }}
+        {{- end }}
+        {{- end }}
+      {{- end }}
+      {{- if $podTemplates.containers }}
+      containers:
+        {{- range $containerName, $container := $podTemplates.containers }}
+        {{- if and $container $container.enabled }}
+        {{- $image := get $.Values.images $containerName }}
+        {{- $_ := set $image "registry" (coalesce $.Values.global.imageRegistry $image.registry) }}
+        {{- $_ := set $container "image" (coalesce $container.image (include "image" $image)) }}
+        {{- $_ := set $container "imagePullPolicy" (coalesce $container.imagePullPolicy $image.pullPolicy) }}
+        - name: {{ include "containerName" $containerName }}
+          {{- tpl (include "renderValues" (dict "omitKeys" (list "enabled" "name" "env" "volumeMounts" "livenessProbe" "readinessProbe" "startupProbe") "values" $container)) $ | indent 10 }}
+          {{- include "renderContainerEnvValues" (dict "envValues" $container.env "context" $) | nindent 10 }}
+          {{- if and (not $container.ports) $.Values.containerPorts }}
+          ports:
+            {{- range $portName, $portNumber := $.Values.containerPorts }}
+            {{- if and $portName $portNumber }}
+            - name: {{ $portName }}
+              containerPort: {{ $portNumber }}
+              protocol: TCP
+            {{- end }}
+            {{- end }}
+          {{- end }}
+          {{- if $container.volumeMounts }}
+          volumeMounts:
+            {{- range $volumeMountName, $volumeMount := $container.volumeMounts }}
+            {{- if and $volumeMount (eq (include "templateToBoolean" (dict "template" $volumeMount.enabled "context" $)) "true") }}
+            - name: {{ tpl $volumeMountName $ }}
+              {{- tpl (include "renderValues" (dict "omitKeys" (list "enabled" "name") "values" $volumeMount)) $ | indent 14 }}
+            {{- end }}
+            {{- end }}
+          {{- end }}
+          {{- if $container.livenessProbe.enabled }}
+          livenessProbe: {{- tpl (include "renderValues" (dict "omitKeys" (list "enabled") "values" $container.livenessProbe)) $ | indent 12 }}
+          {{- end }}
+          {{- if $container.readinessProbe.enabled }}
+          readinessProbe: {{- tpl (include "renderValues" (dict "omitKeys" (list "enabled") "values" $container.readinessProbe)) $ | indent 12 }}
+          {{- end }}
+          {{- if $container.startupProbe.enabled }}
+          startupProbe: {{- tpl (include "renderValues" (dict "omitKeys" (list "enabled") "values" $container.startupProbe)) $ | indent 12 }}
+          {{- end }}
+        {{- end }}
+        {{- end }}
+      {{- end }}
+      {{- if $podTemplates.volumes }}
+      volumes:
+        {{- range $volumeName, $volume := $podTemplates.volumes }}
+        {{- if and $volume (eq (include "templateToBoolean" (dict "template" $volume.enabled "context" $)) "true") }}
+        - name: {{ $volumeName }}
+          {{- tpl (include "renderValues" (dict "omitKeys" (list "enabled" "name") "values" $volume)) $ | indent 10 }}
+        {{- end }}
+        {{- end }}
+      {{- end }}
+      {{- if and (not $podTemplates.securityContext) .Values.podSecurityContext.enabled }}
+      securityContext:
+        {{- include "renderValues" (dict "omitKeys" (list "enabled") "values" .Values.podSecurityContext) | indent 8 }}
+      {{- end }}
+  {{- end }}
+  {{- if and (not $statefulset.volumeClaimTemplates) .Values.persistence .Values.persistence.enabled }}
+  volumeClaimTemplates:
+    - metadata:
+        {{- if .Values.persistence.annotations }}
+        annotations: {{- .Values.persistence.annotations | toYaml | nindent 10 }}
+        {{- end }}
+        {{- if .Values.persistence.labels }}
+        labels: {{- .Values.persistence.labels | toYaml | nindent 10 }}
+        {{- end }}
+        name: data
+      spec:
+        {{- $persistence := .Values.persistence }}
+        {{- $_ := set $persistence "storageClassName" (coalesce $persistence.storageClassName .Values.global.storageClassName) }}
+        {{- include "renderValues" (dict "omitKeys" (list "enabled" "annotations" "labels") "values" $persistence) | indent 8 }}
+  {{- end }}
+{{- end }}

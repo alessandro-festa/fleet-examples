@@ -1,0 +1,13 @@
+{{- if .Values.podDisruptionBudget.enabled }}
+apiVersion: policy/v1
+kind: PodDisruptionBudget
+metadata:
+  {{- include "renderAnnotations" . | indent 2 }}
+  {{- include "renderLabels" (dict "component" "main" "context" $) | indent 2 }}
+  name: {{ include "fullName" . }}
+  namespace: {{ .Release.Namespace | quote }}
+spec:
+  {{- include "renderValues" (dict "omitKeys" (list "enabled" "selector") "values" .Values.podDisruptionBudget) | indent 2 }}
+  selector:
+    matchLabels: {{- include "matchLabels" (dict "additionalLabels" .Values.podTemplates.labels "context" $) | nindent 6 }}
+{{- end }}

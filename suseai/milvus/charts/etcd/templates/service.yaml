@@ -1,0 +1,26 @@
+{{- if .Values.service.enabled }}
+apiVersion: v1
+kind: Service
+metadata:
+  {{- include "renderAnnotations" (dict "additionalAnnotations" .Values.service.annotations "context" $) | indent 2 }}
+  {{- include "renderLabels" (dict "component" "main" "context" $) | indent 2 }}
+  name: {{ include "fullName" . }}
+  namespace: {{ .Release.Namespace | quote }}
+spec:
+  {{- include "renderValues" (dict "omitKeys" (list "enabled" "annotations" "nodePorts" "ports" "selector") "values" .Values.service) | indent 2 }}
+  ports: {{- range $key, $value := .Values.service.ports }}
+    {{- if and $key (coalesce $value (get $.Values.containerPorts $key)) }}
+    - name: {{ $key }}
+      {{- if has $.Values.service.type (list "LoadBalancer" "NodePort") }}
+      {{- if not (empty (get $.Values.service.nodePorts $key)) }}
+      nodePort: {{ get $.Values.service.nodePorts $key }}
+      {{- end }}
+      {{- end }}
+      port: {{ coalesce $value (get $.Values.containerPorts $key) }}
+      {{- if get $.Values.containerPorts $key }}
+      targetPort: {{ $key }}
+      {{- end }}
+    {{- end }}
+  {{- end }}
+  selector: {{- include "matchLabels" (dict "additionalLabels" .Values.podTemplates.labels "component" "main" "context" $) | nindent 4 }}
+{{- end }}

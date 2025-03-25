@@ -1,0 +1,15 @@
+dependencies:
+- name: ollama
+  repository: oci://dp.apps.rancher.io/charts
+  version: 1.4.0
+- name: pipelines
+  repository: ""
+  version: 0.2.0
+- name: apache-tika
+  repository: oci://dp.apps.rancher.io/charts
+  version: 3.0.0
+- name: redis
+  repository: oci://dp.apps.rancher.io/charts
+  version: 1.0.3
+digest: sha256:0fb92ea22f9b1c24a377a35804d32e8bd27e181dbd10588f491aae77399cdc91
+generated: "2025-03-03T16:06:43.049313811-08:00"

@@ -1,0 +1,66 @@
+{{- if .Values.networkPolicy.enabled }}
+apiVersion: networking.k8s.io/v1
+kind: NetworkPolicy
+metadata:
+  {{- include "renderAnnotations" . | indent 2 }}
+  {{- include "renderLabels" (dict "component" "main" "context" $) | indent 2 }}
+  name: {{ include "fullName" . }}
+  namespace: {{ .Release.Namespace | quote }}
+spec:
+  {{- if .Values.networkPolicy.egress.enabled }}
+  egress:
+    - ports:
+        # Allow outbound connections for DNS resolution
+        - port: 53
+          protocol: TCP
+        - port: 53
+          protocol: UDP
+        # Allow outbound connections to cluster members
+        {{- range $key, $value := .Values.networkPolicy.egress.ports }}
+        {{- $port := coalesce $value (get $.Values.containerPorts $key) }}
+        {{- if $port }}
+        - port: {{ $port }}
+        {{- end }}
+        {{- end }}
+      {{- if not (and .Values.networkPolicy.allowExternalConnections .Values.networkPolicy.egress.allowExternalConnections) }}
+      to:
+        - podSelector:
+            matchLabels: {{- include "matchLabels" (dict "additionalLabels" (merge .Values.podTemplates.labels .Values.networkPolicy.egress.podLabels) "component" "main" "context" $) | nindent 14 }}
+          {{- if .Values.networkPolicy.egress.namespaceLabels }}
+          namespaceSelector:
+            matchLabels: {{- toYaml .Values.networkPolicy.egress.namespaceLabels | nindent 14 }}
+          {{- end }}
+      {{- end }}
+    {{- if .Values.networkPolicy.egress.extraRules }}
+    # Additional egress rules
+    {{- tpl (toYaml .Values.networkPolicy.egress.extraRules) $ | nindent 4 }}
+    {{- end }}
+  {{- end }}
+  {{- if .Values.networkPolicy.ingress.enabled }}
+  ingress:
+    # Allow inbound connections to cluster members
+    - ports:
+        # Allow outbound connections to cluster members
+        {{- range $key, $value := .Values.networkPolicy.ingress.ports }}
+        {{- $port := coalesce $value (get $.Values.containerPorts $key) }}
+        {{- if $port }}
+        - port: {{ $port }}
+        {{- end }}
+        {{- end }}
+      {{- if not (and .Values.networkPolicy.allowExternalConnections .Values.networkPolicy.ingress.allowExternalConnections) }}
+      from:
+        - podSelector:
+            matchLabels: {{- include "matchLabels" (dict "additionalLabels" (merge .Values.podTemplates.labels .Values.networkPolicy.ingress.podLabels) "component" "main" "context" $) | nindent 14 }}
+          {{- if .Values.networkPolicy.ingress.namespaceLabels }}
+          namespaceSelector:
+            matchLabels: {{- toYaml .Values.networkPolicy.ingress.namespaceLabels | nindent 14 }}
+          {{- end }}
+      {{- end }}
+    {{- if .Values.networkPolicy.ingress.extraRules }}
+    # Additional ingress rules
+    {{- tpl (toYaml .Values.networkPolicy.ingress.extraRules) $ | nindent 4 }}
+    {{- end }}
+  {{- end }}
+  podSelector:
+    matchLabels: {{- include "matchLabels" (dict "additionalLabels" (merge .Values.podTemplates.labels .Values.networkPolicy.ingress.podLabels)  "component" "main" "context" $) | nindent 6 }}
+{{- end }}

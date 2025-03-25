@@ -1,0 +1,17 @@
+{{- if eq .Values.architecture "sentinel" }}
+{{- $scripts := .Files.Glob "scripts/{*,sentinel/*}.sh" }}
+{{- if $scripts }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  {{- include "application-collection.render.annotations" . | indent 2 }}
+  {{- include "application-collection.render.labels" (dict "component" "sentinel" "context" $) | indent 2 }}
+  name: {{ include "application-collection.fullName" (dict "suffix" "sentinel-scripts" "context" $) }}
+  namespace: {{ .Release.Namespace | quote }}
+data:
+  {{- range $path, $contents := $scripts }}
+  {{ base $path }}: |
+    {{- printf "%s" $contents | nindent 4 }}
+  {{- end }}
+{{- end }}
+{{- end }}

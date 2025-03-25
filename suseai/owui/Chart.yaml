@@ -1,0 +1,46 @@
+annotations:
+  helm.sh/images: |
+    - image: dp.apps.rancher.io/containers/open-webui:0.5.14
+      name: open-webui
+  licenses: MIT
+apiVersion: v2
+appVersion: 0.5.14
+dependencies:
+- condition: ollama.enabled
+  import-values:
+  - child: service
+    parent: ollama.service
+  name: ollama
+  repository: oci://dp.apps.rancher.io/charts
+  version: 1.4.0
+- condition: pipelines.enabled
+  import-values:
+  - child: service
+    parent: pipelines.service
+  name: pipelines
+  repository: ""
+  version: 0.2.0
+- alias: tika
+  condition: tika.enabled
+  name: apache-tika
+  repository: oci://dp.apps.rancher.io/charts
+  version: 3.0.0
+- alias: redis-cluster
+  condition: redis-cluster.enabled
+  name: redis
+  repository: oci://dp.apps.rancher.io/charts
+  version: 1.0.3
+description: Open WebUI is an extensible, feature-rich, and user-friendly self-hosted
+  WebUI designed to operate entirely offline. It supports various LLM runners, including
+  Ollama and OpenAI-compatible APIs.
+home: https://apps.rancher.io/applications/open-webui
+icon: https://raw.githubusercontent.com/open-webui/open-webui/main/static/favicon.png
+keywords:
+- llm
+- chat
+- web-ui
+maintainers:
+- name: SUSE LLC
+  url: https://www.suse.com
+name: open-webui
+version: 5.16.0

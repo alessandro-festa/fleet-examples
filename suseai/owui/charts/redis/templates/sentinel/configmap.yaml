@@ -1,0 +1,18 @@
+{{- if eq .Values.architecture "sentinel" }}
+{{- if eq (include "application-collection.render.boolean" (dict "template" .Values.sentinel.configMap.enabled "context" $)) "true" }}
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  {{- include "application-collection.render.annotations" . | indent 2 }}
+  {{- include "application-collection.render.labels" (dict "component" "sentinel" "context" $) | indent 2 }}
+  name: {{ include "application-collection.fullName" (dict "suffix" "sentinel" "context" $) }}
+  namespace: {{ .Release.Namespace | quote }}
+data:
+  {{- range $configMapName, $configMapValue := .Values.sentinel.configMap }}
+  {{- if and $configMapName (ne $configMapName "enabled") $configMapValue }}
+  {{ tpl $configMapName $ }}: |
+    {{- tpl $configMapValue $ | nindent 4 }}
+  {{- end }}
+  {{- end }}
+{{- end }}
+{{- end }}

@@ -8,7 +8,7 @@ helm:
   # The directory of the chart in the repo.  Also any valid go-getter supported
   # URL can be used there is specify where to download the chart from.
   # If repo below is set this value if the chart name in the repo
-  chart: "oci://dp.apps.rancher.io/charts/milvus"
+  chart: ""
 
   # Used if repo is set to look up the version of the chart
   version: "4.2.2"
@@ -23,15 +23,3 @@ helm:
   # Path to any values files that need to be passed to helm during install.
   valuesFiles:
     - milvus_custom_overrides.yaml
-  
-  # If fleet.yaml contains a private Helm repo that requires authentication,
-  # provide the credentials in a K8s secret and specify them here.
-  # Danger: the credentials will be sent to all repositories referenced from
-  # this gitrepo. See section below for more information.
-  #
-  helmSecretName: rancher-auth
-
-  # Helm credentials from helmSecretName will be used if the helm repository url matches this regular expression.
-  # Credentials will always be used if it is empty or not provided
-  #
-  helmRepoURLRegex: oci://dp.apps.rancher.io/*

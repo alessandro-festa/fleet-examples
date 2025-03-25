@@ -1,0 +1,17 @@
+annotations:
+  helm.sh/images: |
+    - image: dp.apps.rancher.io/containers/minio:0.20241002.175041
+      name: minio
+    - image: dp.apps.rancher.io/containers/mc:0
+      name: mc
+apiVersion: v2
+appVersion: 0.20241002.175041
+description: MinIO is a High Performance Object Storage, API compatible with Amazon
+  S3 cloud storage service. Use MinIO to build high performance infrastructure for
+  machine learning, analytics and application data workloads.
+home: https://apps.rancher.io/applications/minio
+maintainers:
+- name: SUSE LLC
+  url: https://www.suse.com/
+name: minio
+version: 5.2.0

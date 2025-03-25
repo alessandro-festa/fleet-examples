@@ -9,7 +9,7 @@ helm:
   # The directory of the chart in the repo.  Also any valid go-getter supported
   # URL can be used there is specify where to download the chart from.
   # If repo below is set this value if the chart name in the repo
-  chart: "oci://dp.apps.rancher.io/charts/open-webui"
+  chart: ""
 
   # Used if repo is set to look up the version of the chart
   version: "5.16.0"
@@ -25,20 +25,6 @@ helm:
   valuesFiles:
     - owui_custom_overrides.yaml
 
-  # If fleet.yaml contains a private Helm repo that requires authentication,
-  # provide the credentials in a K8s secret and specify them here.
-  # Danger: the credentials will be sent to all repositories referenced from
-  # this gitrepo. See section below for more information.
-  #
-  helmSecretName: rancher-auth
-
-  # Helm credentials from helmSecretName will be used if the helm repository url matches this regular expression.
-  # Credentials will always be used if it is empty or not provided
-  #
-  helmRepoURLRegex: oci://dp.apps.rancher.io/*
-# dependsOn allows you to configure dependencies to other bundles. The current
-# bundle will only be deployed, after all dependencies are deployed and in a
-# Ready state.
 dependsOn:
  - name: milvus
 
