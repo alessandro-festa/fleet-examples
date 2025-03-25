@@ -2,6 +2,7 @@ defaultNamespace: default
 helm:
   releaseName: milvus
   chart: oci://dp.apps.rancher.io/charts/milvus
+  helmSecretName: basic-auth-secret
   version: 4.2.2
     
   # Path to any values files that need to be passed to helm during install.
