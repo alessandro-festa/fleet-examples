@@ -28,3 +28,9 @@ helm:
 # Ready state.
 dependsOn:
  - name: milvus
+
+  # Allow to use values files from configmaps or secrets defined in the
+  # downstream clusters.
+  valuesFrom:
+    - secretKeyRef:
+        name: application-collection
