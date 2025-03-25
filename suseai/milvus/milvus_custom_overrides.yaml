@@ -1,6 +1,7 @@
 global:
   imagePullSecrets:
   - application-collection
+  namespace: suseai
 cluster:
   enabled: False
 standalone:

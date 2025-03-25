@@ -1,6 +1,7 @@
 global:
   imagePullSecrets:
   - application-collection
+  namespace: suseai
 image:
   registry: dp.apps.rancher.io
   repository: containers/open-webui
