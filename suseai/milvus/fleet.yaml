@@ -3,8 +3,9 @@ helm:
   releaseName: milvus
   chart: oci://dp.apps.rancher.io/charts
   helmSecretName: basic-auth-secret
-  imagePullSecrets:
-    - name: application-collection
+  ociRegistry:
+    authSecretName: application-collection
+    insecureSkipTLS: true
   version: 4.2.2
     
   # Path to any values files that need to be passed to helm during install.
