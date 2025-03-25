@@ -1,7 +1,4 @@
 helm:
-  chart: .
   # Path to any values files that need to be passed to helm during install.
   valuesFiles:
     - owui_custom_overrides.yaml
-dependsOn:
-  - name: milvus
