@@ -1,7 +1,7 @@
 defaultNamespace: default
 helm:
   releaseName: milvus
-  chart: oci://dp.apps.rancher.io/charts
+  chart: oci://dp.apps.rancher.io/charts/milvus
   helmSecretName: basic-auth-secret
   ociRegistry:
     authSecretName: application-collection
