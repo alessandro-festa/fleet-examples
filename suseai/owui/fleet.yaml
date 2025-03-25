@@ -24,6 +24,18 @@ helm:
   # Path to any values files that need to be passed to helm during install.
   valuesFiles:
     - owui_custom_overrides.yaml
+
+  # If fleet.yaml contains a private Helm repo that requires authentication,
+  # provide the credentials in a K8s secret and specify them here.
+  # Danger: the credentials will be sent to all repositories referenced from
+  # this gitrepo. See section below for more information.
+  #
+  helmSecretName: application-collection
+
+  # Helm credentials from helmSecretName will be used if the helm repository url matches this regular expression.
+  # Credentials will always be used if it is empty or not provided
+  #
+  helmRepoURLRegex: oci://dp.apps.rancher.io/*
 # dependsOn allows you to configure dependencies to other bundles. The current
 # bundle will only be deployed, after all dependencies are deployed and in a
 # Ready state.
