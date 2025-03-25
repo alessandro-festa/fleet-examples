@@ -41,12 +41,12 @@ ollama:
   #   volumeName: "example-pre-existing-pv-created-by-smb-csi"
 pipelines:
   # -- Automatically install Pipelines chart to extend Open WebUI functionality using Pipelines: https://github.com/open-webui/pipelines
-  enabled: false
+  enabled: true
   # -- This section can be used to pass required environment variables to your pipelines (e.g. Langfuse hostname)
   extraEnvVars: []
 tika:
   # -- Automatically install Apache Tika to extend Open WebUI
-  enabled: false
+  enabled: true
 # -- A list of Ollama API endpoints. These can be added in lieu of automatically installing the Ollama Helm chart, or in addition to it.
 ollamaUrls: []
 # -- Disables taking Ollama Urls from `ollamaUrls`  list
@@ -248,10 +248,10 @@ extraEnvVars:
     value: "0p3n-w3bu!"
   - name: WEBUI_NAME
     value: "SUSE AI"
-# valueFrom:
-#   secretKeyRef:
-#     name: pipelines-api-key
-#     key: api-key
+valueFrom:
+  secretKeyRef:
+    name: pipelines-api-key
+    key: api-key
 # - name: OPENAI_API_KEY
 #   valueFrom:
 #     secretKeyRef:
