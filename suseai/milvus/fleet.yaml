@@ -29,7 +29,7 @@ helm:
   # Danger: the credentials will be sent to all repositories referenced from
   # this gitrepo. See section below for more information.
   #
-  helmSecretName: application-collection
+  helmSecretName: rancher-auth
 
   # Helm credentials from helmSecretName will be used if the helm repository url matches this regular expression.
   # Credentials will always be used if it is empty or not provided
