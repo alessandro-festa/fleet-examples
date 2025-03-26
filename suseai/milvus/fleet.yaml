@@ -1,5 +1,6 @@
 helm:
+   repo: ""
    chart: ""
-   version: 4.2.2 # Replace with the version you'd like to install or upgrade to
+   version: "" # Replace with the version you'd like to install or upgrade to
    releaseName: milvus
     # Path to any values files that need to be passed to helm during install.
