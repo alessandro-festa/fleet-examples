@@ -25,34 +25,6 @@ cluster:
       repository: containers/milvus
       tag: 2.4.6
       pullPolicy: IfNotPresent
-      ## Optionally specify an array of imagePullSecrets.
-      ## Secrets must be manually created in the namespace.
-      ## ref: https://kubernetes.io/docs/tasks/configure-pod-container/pull-image-private-registry/
-      ##
-      # pullSecrets:
-      #   - myRegistryKeySecretName
-  # Global node selector
-  # If set, this will apply to all milvus components
-  # Individual components can be set to a different node selector
-  nodeSelector: {}
-  # Global tolerations
-  # If set, this will apply to all milvus components
-  # Individual components can be set to a different tolerations
-  tolerations: []
-  # Global affinity
-  # If set, this will apply to all milvus components
-  # Individual components can be set to a different affinity
-  affinity: {}
-  # Global labels and annotations
-  # If set, this will apply to all milvus components
-  labels: {}
-  annotations: {}
-  ##
-  ## If set, the whole config will be mounted from this custom ConfigMap.
-  ## The ConfigMap should have a key named `milvus.yaml` which contains the full Milvus config.
-  ## extraConfigFiles will be ignored if this variable is set.
-  ##
-  customConfigMap: ""
   # Extra configs for milvus.yaml
   # If set, this config will merge into milvus.yaml
   # Please follow the config structure in the milvus.yaml
@@ -485,7 +457,7 @@ cluster:
   etcd:
     enabled: true
     name: etcd
-    replicaCount: 3
+    replicaCount: 1
     service:
       enabled: true
       annotations: {}
@@ -509,7 +481,7 @@ cluster:
   kafka:
     enabled: true
     name: kafka
-    replicaCount: 3
+    replicaCount: 1
     broker:
       enabled: true
     cluster:
