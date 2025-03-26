@@ -16,9 +16,6 @@ persistence:
   storageClass: local-path
 milvus:
   enabled: true
-## Enable or disable Milvus Cluster mode
-cluster:
-  enabled: false
   image:
     all:
       registry: dp.apps.rancher.io
@@ -40,25 +37,8 @@ cluster:
       #   common:
       #     security:
       #       tlsMode: 1
-  service:
-    type: ClusterIP
-    port: 19530
-    portName: milvus
-    nodePort: ""
-    annotations: {}
-    labels: {}
-    ## List of IP addresses at which the Milvus service is available
-    ## Ref: https://kubernetes.io/docs/user-guide/services/#external-ips
-    ##
-    externalIPs: []
-    #   - externalIp1
-
-    # LoadBalancerSourcesRange is a list of allowed CIDR values, which are combined with ServicePort to
-    # set allowed inbound rules on the security group assigned to the master load balancer
-    loadBalancerSourceRanges:
-      - 0.0.0.0/0
-      # Optionally assign a known public LB IP
-      # loadBalancerIP: 1.2.3.4
+    ingress:
+      enabled: false
 ollama:
   enabled: true
   image:
