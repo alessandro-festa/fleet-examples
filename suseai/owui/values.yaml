@@ -19,6 +19,9 @@ global:
     additionalTrustedCAs: false
 nameOverride: ""
 namespaceOverride: ""
+milvus:
+  enabled: true
+  fullnameOverride: "milvus"
 ollama:
   # -- Automatically install Ollama Helm chart from dp.apps.rancher.io/charts/ollama.
   enabled: true
