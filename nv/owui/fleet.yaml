@@ -33,6 +33,6 @@ helm:
     - values.yaml
   
   dependsOn:
-    - milvus.yaml
-    - ollama.yaml
+    - milvus
+    - ollama
   
