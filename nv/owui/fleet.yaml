@@ -31,8 +31,5 @@ helm:
   
   valuesFiles:
     - owui-values.yaml
-  
-  dependsOn:
-    - suseai-deployment-milvus-standalone
-    - suseai-deployment-ollama
+
   
