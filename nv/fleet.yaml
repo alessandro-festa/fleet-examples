@@ -17,7 +17,7 @@ helm:
   # repo: ""
 
   # Used if repo is set to look up the version of the chart
-  version: "5.4.0"
+  version: "4.2.2"
 
   # Force recreate resource that can not be updated
   force: false
