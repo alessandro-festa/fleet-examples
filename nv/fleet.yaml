@@ -29,7 +29,7 @@ helm:
   # Custom values that will be passed as values.yaml to the installation
   values: 
     cluster:
-      enabled: False
+      enabled: True
     standalone:
       persistence:
         persistentVolumeClaim:
