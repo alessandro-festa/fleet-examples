@@ -1,0 +1,21 @@
+global:
+  imagePullSecrets:
+  - application-collection
+specs:
+  image:
+    registry: dp.apps.rancher.io
+    repository: containers/ollama
+    tag: 0.6.2
+    pullPolicy: IfNotPresent
+  ingress:
+    enabled: false
+  defaultModel: "llama3.2-vision"
+  ollama:
+    models:
+      - "llama3.2-vision"
+      - "llama3.2"
+ingress:
+  enabled: false
+persistentVolume:
+  enabled: true
+  storageClass: local-path
