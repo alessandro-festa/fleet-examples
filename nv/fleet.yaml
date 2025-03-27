@@ -25,7 +25,7 @@ helm:
 
   # Custom values that will be passed as values.yaml to the installation
   values:
-    global:
-  imagePullSecrets:
-  - application-collection
+    helmSecretName: basic-auth-secret
+    ociRegistry:
+      authSecretName: application-collection
   
