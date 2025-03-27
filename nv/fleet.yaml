@@ -8,13 +8,13 @@ helm:
   # The directory of the chart in the repo.  Also any valid go-getter supported
   # URL can be used there is specify where to download the chart from.
   # If repo below is set this value if the chart name in the repo
-  chart: "oci://dp.apps.rancher.io/charts/milvus"
+  chart: "oci://dp.apps.rancher.io/charts/ollama"
 
   # An https to a valid Helm repository to download the chart from
   repo: ""
 
   # Used if repo is set to look up the version of the chart
-  version: "4.2.2"
+  version: "0.63.0"
 
   # Force recreate resource that can not be updated
   force: false
@@ -28,46 +28,4 @@ helm:
     global:
   imagePullSecrets:
   - application-collection
-  cluster:
-    enabled: False
-  standalone:
-    persistence:
-      persistentVolumeClaim:
-        storageClass: local-path
-  etcd:
-    replicaCount: 1
-    persistence:
-      storageClassName: local-path
-  minio:
-    mode: standalone
-    replicas: 1
-    rootUser: "admin"
-    rootPassword: "adminminio"
-    persistence:
-      storageClass: local-path
-    resources:
-      requests:
-        memory: 1024Mi
-  kafka:
-    enabled: true
-    name: kafka
-    replicaCount: 1
-    broker:
-      enabled: true
-    cluster:
-      listeners:
-        client:
-          protocol: 'PLAINTEXT'
-        controller:
-          protocol: 'PLAINTEXT'
-    persistence:
-      enabled: true
-      annotations: {}
-      labels: {}
-      existingClaim: ""
-      accessModes:
-        - ReadWriteOnce
-      resources:
-        requests:
-          storage: 8Gi
-      storageClassName: "local-path"
+  
