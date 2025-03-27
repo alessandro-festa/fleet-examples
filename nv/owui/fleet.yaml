@@ -33,6 +33,6 @@ helm:
     - owui-values.yaml
   
   dependsOn:
-    - milvussuseai-deployment-milvus-standalone
-    - ollamsuseai-deployment-milvus-standalone
+    - suseai-deployment-milvus-standalone
+    - suseai-deployment-ollama
   

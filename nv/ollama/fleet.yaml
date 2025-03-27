@@ -32,5 +32,5 @@ helm:
   valuesFiles:
     - ollama-values.yaml
   dependsOn: 
-    - milvussuseai-deployment-milvus-standalone
+    - suseai-deployment-milvus-standalone
   
