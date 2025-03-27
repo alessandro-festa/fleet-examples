@@ -2,6 +2,9 @@ namespace: suseai
 
 # Custom helm options
 helm:
+  helmSecretName: basic-auth-secret
+  ociRegistry:
+    authSecretName: application-collection
   # The release name to use. If empty a generated release name will be used
   releaseName: suseai-deployment
 
@@ -24,8 +27,7 @@ helm:
   timeoutSeconds: 0
 
   # Custom values that will be passed as values.yaml to the installation
-  values:
-    helmSecretName: basic-auth-secret
-    ociRegistry:
-      authSecretName: application-collection
+  # values: 
+
+
   
