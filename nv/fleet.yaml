@@ -34,10 +34,10 @@ helm:
       persistence:
         persistentVolumeClaim:
           storageClass: local-path
-    etcd:
-      replicaCount: 1
-      persistence:
-        storageClassName: local-path
+    # etcd:
+    #   replicaCount: 1
+    #   persistence:
+    #     storageClassName: local-path
     # minio:
     #   mode: standalone
     #   replicas: 1
