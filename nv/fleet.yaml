@@ -27,13 +27,13 @@ helm:
   timeoutSeconds: 0
 
   # Custom values that will be passed as values.yaml to the installation
-  values: 
-    cluster:
-      enabled: True
-    standalone:
-      persistence:
-        persistentVolumeClaim:
-          storageClass: local-path
+  # values: 
+    # cluster:
+    #   enabled: True
+    # standalone:
+    #   persistence:
+    #     persistentVolumeClaim:
+    #       storageClass: local-path
     # etcd:
     #   replicaCount: 1
     #   persistence:
