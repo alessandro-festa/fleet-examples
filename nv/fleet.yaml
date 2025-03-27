@@ -29,3 +29,6 @@ helm:
   values:
     replicas: 1
   
+  valuesFiles:
+    - values.yaml
+  
