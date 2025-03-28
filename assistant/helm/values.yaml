@@ -179,7 +179,7 @@ retriever-canonical:
           - name: APP_TEXTSPLITTER_CHUNKOVERLAP
             value: '200'
           - name: NVIDIA_API_KEY
-            value: ""
+            value: "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"
           - name: COLLECTION_NAME
             value: unstructured_data
           - name: APP_RETRIEVER_TOPK
@@ -235,7 +235,7 @@ retriever-structured:
               of context, you will refrain from replying and politely decline to respond
               to the user.
           - name: NVIDIA_API_KEY
-            value: ""
+            value: "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"
           - name: COLLECTION_NAME
             value: structured_data
           - name: APP_DATABASE_NAME
