@@ -55,9 +55,9 @@ applicationSpecs:
         ports:
         - containerPort: 8000
           name: http
-        resources:
-          limits:
-            nvidia.com/gpu: 4
+        # resources:
+        #   limits:
+        #     nvidia.com/gpu: 4
     securityContext:
       runAsGroup: 1000
       runAsUser: 1000
