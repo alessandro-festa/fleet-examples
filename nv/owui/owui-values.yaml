@@ -60,4 +60,4 @@ extraEnvVars:
 - name: VECTOR_DB
   value: "milvus"
 - name: MILVUS_URI
-  value: http://milvus.suseai.svc.cluster.local:19530
+  value: http://suseai-nv-milvus-standalone.suseai.svc.cluster.local:19530
