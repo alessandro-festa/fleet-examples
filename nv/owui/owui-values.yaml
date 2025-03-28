@@ -34,7 +34,7 @@ ollama:
       enabled: true
       storageClass: local-path
 pipelines:
-  enabled: False
+  enabled: true
   persistence:
     storageClass: local-path
 tika:
