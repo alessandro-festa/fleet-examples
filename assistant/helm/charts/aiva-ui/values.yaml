@@ -47,3 +47,4 @@ securityContext: {}
 service:
   type: NodePort
   port: 3001
+  nodePort: 30000
