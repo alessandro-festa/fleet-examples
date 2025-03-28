@@ -353,4 +353,4 @@ nemollm-embedding:
         embedding-container:
           env:
           - name: NGC_API_KEY
-            value: "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"
+            value: "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"
