@@ -25,9 +25,9 @@ agent-services:
           - name: EXAMPLE_PATH
             value: ./src/agent
           - name: APP_LLM_MODELNAME
-            value: meta/llama-3.2
+            value: meta/llama-3-8b-instruct
           - name: APP_LLM_MODELENGINE
-            value: ollama
+            value: nvidia-ai-endpoints
           - name: APP_LLM_SERVERURL
             value: nemollm-inference-nemollm-infer-deployment-llm-service:8000
           - name: APP_CACHE_NAME
@@ -57,7 +57,7 @@ agent-services:
           - name: STRUCTURED_RAG_URI
             value: http://retriever-structured-structured-deployment-structured-service:8087
           - name: NVIDIA_API_KEY
-            value: "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"
+            value: "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"
           - name: GRAPH_RECURSION_LIMIT
             value: '20'
           - name: GRAPH_TIMEOUT_IN_SEC
@@ -93,9 +93,9 @@ analytics-services:
           - name: EXAMPLE_PATH
             value: ./src/analytics
           - name: APP_LLM_MODELNAME
-            value: meta/llama-3.2
+            value: meta/llama-3-8b-instruct
           - name: APP_LLM_MODELENGINE
-            value: ollama
+            value: nvidia-ai-endpoints
           - name: APP_LLM_SERVERURL
             value: nemollm-inference-nemollm-infer-deployment-llm-service:8000
           - name: APP_DATABASE_NAME
@@ -113,7 +113,7 @@ analytics-services:
           - name: PERSIST_DATA
             value: 'true'
           - name: NVIDIA_API_KEY
-            value: "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"
+            value: "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"
           - name: LOGLEVEL
             value: INFO
   egress:
@@ -155,9 +155,9 @@ retriever-canonical:
           - name: APP_VECTORSTORE_NAME
             value: milvus
           - name: APP_LLM_MODELNAME
-            value: meta/llama-3.2
+            value: meta/llama-3-8b-instruct
           - name: APP_LLM_MODELENGINE
-            value: ollama
+            value: nvidia-ai-endpoints
           - name: APP_LLM_SERVERURL
             value: nemollm-inference-nemollm-infer-deployment-llm-service:8000
           - name: APP_EMBEDDINGS_MODELNAME
@@ -212,13 +212,13 @@ retriever-structured:
           - name: EXAMPLE_PATH
             value: src/retrievers/structured_data
           - name: APP_LLM_MODELNAME
-            value: meta/llama-3.1-70b-instruct
+            value: meta/llama-3-8b-instruct
           - name: APP_LLM_MODELENGINE
             value: nvidia-ai-endpoints
           - name: APP_LLM_SERVERURL
             value: nemollm-inference-nemollm-infer-deployment-llm-service:8000
           - name: APP_LLM_MODELNAMEPANDASAI
-            value: meta/llama-3.1-70b-instruct
+            value: meta/llama-3-8b-instruct
           - name: APP_EMBEDDINGS_MODELNAME
             value: nvidia/llama-3.2-nv-embedqa-1b-v2
           - name: APP_EMBEDDINGS_MODELENGINE
