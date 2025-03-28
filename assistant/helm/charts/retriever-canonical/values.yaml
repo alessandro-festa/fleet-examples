@@ -47,7 +47,7 @@ applicationSpecs:
         - name: APP_VECTORSTORE_NAME
           value: milvus
         - name: APP_LLM_MODELNAME
-          value: meta/llama-3.1-70b-instruct
+          value: meta/llama-3-8b-instruct
         - name: APP_LLM_MODELENGINE
           value: nvidia-ai-endpoints
         - name: APP_LLM_SERVERURL

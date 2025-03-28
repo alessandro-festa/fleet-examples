@@ -43,13 +43,13 @@ applicationSpecs:
         - name: EXAMPLE_PATH
           value: src/retrievers/structured_data
         - name: APP_LLM_MODELNAME
-          value: meta/llama-3.1-70b-instruct
+          value: meta/llama-3-8b-instruct
         - name: APP_LLM_MODELENGINE
           value: nvidia-ai-endpoints
         - name: APP_LLM_SERVERURL
           value: $egress.llm-nim.address:$egress.llm-nim.port
         - name: APP_LLM_MODELNAMEPANDASAI
-          value: meta/llama-3.1-70b-instruct
+          value: meta/llama-3-8b-instruct
         - name: APP_PROMPTS_CHATTEMPLATE
           value: You are a helpful, respectful and honest assistant. Always answer
             as helpfully as possible, while being safe. Please ensure that your responses
