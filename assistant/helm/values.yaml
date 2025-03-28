@@ -335,7 +335,7 @@ ranking-ms:
         ranking-container:
           env:
           - name: NGC_API_KEY
-            value: "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"
+            value: "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"
 
 nemollm-inference:
   applicationSpecs:
@@ -353,4 +353,4 @@ nemollm-embedding:
         embedding-container:
           env:
           - name: NGC_API_KEY
-            value: "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"
+            value: "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"
