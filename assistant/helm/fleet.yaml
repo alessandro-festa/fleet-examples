@@ -8,5 +8,5 @@ helm:
     global.ngcImagePullSecretName: ngc-docker-reg-secret
     ranking-ms.applicationSpecs.ranking-deployment.containers.ranking-container.env[0].value: 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
     nemollm-inference.applicationSpecs.nemollm-infer-deployment.containers.nemollm-infer-container.env[0].value: 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
-    nemollm-embedding.applicationSpecs.embedding-deployment.containers.embedding-container.env[0].value: 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
+    nemollm-embedding.applicationSpecs.embedding-deployment.containers.embedding-container.env[0].value: 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
 
