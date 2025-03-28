@@ -14,7 +14,7 @@ persistence:
   enabled: true
   storageClass: local-path
 ollama:
-  enabled: true
+  enabled: false
   image:
     registry: dp.apps.rancher.io
     repository: containers/ollama
