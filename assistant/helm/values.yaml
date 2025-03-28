@@ -25,9 +25,9 @@ agent-services:
           - name: EXAMPLE_PATH
             value: ./src/agent
           - name: APP_LLM_MODELNAME
-            value: meta/llama-3.1-70b-instruct
+            value: meta/llama-3.2
           - name: APP_LLM_MODELENGINE
-            value: nvidia-ai-endpoints
+            value: ollama
           - name: APP_LLM_SERVERURL
             value: nemollm-inference-nemollm-infer-deployment-llm-service:8000
           - name: APP_CACHE_NAME
@@ -93,9 +93,9 @@ analytics-services:
           - name: EXAMPLE_PATH
             value: ./src/analytics
           - name: APP_LLM_MODELNAME
-            value: meta/llama-3.1-70b-instruct
+            value: meta/llama-3.2
           - name: APP_LLM_MODELENGINE
-            value: nvidia-ai-endpoints
+            value: ollama
           - name: APP_LLM_SERVERURL
             value: nemollm-inference-nemollm-infer-deployment-llm-service:8000
           - name: APP_DATABASE_NAME
@@ -155,9 +155,9 @@ retriever-canonical:
           - name: APP_VECTORSTORE_NAME
             value: milvus
           - name: APP_LLM_MODELNAME
-            value: meta/llama-3.1-70b-instruct
+            value: meta/llama-3.2
           - name: APP_LLM_MODELENGINE
-            value: nvidia-ai-endpoints
+            value: ollama
           - name: APP_LLM_SERVERURL
             value: nemollm-inference-nemollm-infer-deployment-llm-service:8000
           - name: APP_EMBEDDINGS_MODELNAME
