@@ -25,7 +25,7 @@ agent-services:
           - name: EXAMPLE_PATH
             value: ./src/agent
           - name: APP_LLM_MODELNAME
-            value: meta/llama-3-8b-instruct
+            value: meta/llama-3.2-1b-instruct
           - name: APP_LLM_MODELENGINE
             value: nvidia-ai-endpoints
           - name: APP_LLM_SERVERURL
@@ -57,7 +57,7 @@ agent-services:
           - name: STRUCTURED_RAG_URI
             value: http://retriever-structured-structured-deployment-structured-service:8087
           - name: NVIDIA_API_KEY
-            value: "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"
+            value: ""
           - name: GRAPH_RECURSION_LIMIT
             value: '20'
           - name: GRAPH_TIMEOUT_IN_SEC
@@ -93,7 +93,7 @@ analytics-services:
           - name: EXAMPLE_PATH
             value: ./src/analytics
           - name: APP_LLM_MODELNAME
-            value: meta/llama-3-8b-instruct
+            value: meta/llama-3.2-1b-instruct
           - name: APP_LLM_MODELENGINE
             value: nvidia-ai-endpoints
           - name: APP_LLM_SERVERURL
@@ -113,7 +113,7 @@ analytics-services:
           - name: PERSIST_DATA
             value: 'true'
           - name: NVIDIA_API_KEY
-            value: "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"
+            value: ""
           - name: LOGLEVEL
             value: INFO
   egress:
@@ -179,7 +179,7 @@ retriever-canonical:
           - name: APP_TEXTSPLITTER_CHUNKOVERLAP
             value: '200'
           - name: NVIDIA_API_KEY
-            value: "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"
+            value: ""
           - name: COLLECTION_NAME
             value: unstructured_data
           - name: APP_RETRIEVER_TOPK
@@ -344,7 +344,7 @@ nemollm-inference:
         nemollm-infer-container:
           env:
           - name: NGC_API_KEY
-            value: "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"
+            value: "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"
 
 nemollm-embedding:
   applicationSpecs:

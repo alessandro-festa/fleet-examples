@@ -22,7 +22,7 @@ applicationSpecs:
         - name: NGC_API_KEY
           value: ""
         image:
-          repository: nvcr.io/nim/meta/llama-3-8b-instruct
+          repository: nvcr.io/nim/meta/llama-3.2-1b-instruct
           tag: 1.1
         livenessProbe:
           exec:
