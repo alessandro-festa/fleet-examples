@@ -1,4 +1,5 @@
 # Custom helm options
+namespace: suseai
 helm:
   repo: ""
   chart: ""
