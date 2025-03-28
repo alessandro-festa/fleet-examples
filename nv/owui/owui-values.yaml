@@ -9,7 +9,7 @@ image:
   # tag: 0.5.10
   pullPolicy: IfNotPresent
 ollamaUrls:
-- http://ollama.suseai.svc.cluster.local:11434
+- http://suseai-nv-ollama.suseai.svc.cluster.local:11434
 persistence:
   enabled: true
   storageClass: local-path
