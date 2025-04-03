@@ -22,10 +22,10 @@ ollama:
     pullPolicy: IfNotPresent
   ingress:
     enabled: false
-  # defaultModel: "llama3.2"
-  # ollama:
-  #   models:
-  #     - "llama3.2"
+  defaultModel: "llama3.2"
+  ollama:
+    models:
+      - "llama3.2"
     gpu:
       enabled: false
       type: 'nvidia'
