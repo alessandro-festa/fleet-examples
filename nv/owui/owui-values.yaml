@@ -15,7 +15,7 @@ persistence:
   storageClass: local-path
 
 pipelines:
-  enabled: true
+  enabled: false
   persistence:
     storageClass: local-path
 tika:
