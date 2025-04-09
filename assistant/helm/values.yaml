@@ -57,7 +57,7 @@ agent-services:
           - name: STRUCTURED_RAG_URI
             value: http://retriever-structured-structured-deployment-structured-service:8087
           - name: NVIDIA_API_KEY
-            value: ""
+            value: "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"
           - name: GRAPH_RECURSION_LIMIT
             value: '20'
           - name: GRAPH_TIMEOUT_IN_SEC
@@ -113,7 +113,7 @@ analytics-services:
           - name: PERSIST_DATA
             value: 'true'
           - name: NVIDIA_API_KEY
-            value: ""
+            value: "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"
           - name: LOGLEVEL
             value: INFO
   egress:
@@ -179,7 +179,7 @@ retriever-canonical:
           - name: APP_TEXTSPLITTER_CHUNKOVERLAP
             value: '200'
           - name: NVIDIA_API_KEY
-            value: ""
+            value: "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"
           - name: COLLECTION_NAME
             value: unstructured_data
           - name: APP_RETRIEVER_TOPK
@@ -335,7 +335,7 @@ ranking-ms:
         ranking-container:
           env:
           - name: NGC_API_KEY
-            value: "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"
+            value: "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"
 
 nemollm-inference:
   applicationSpecs:
@@ -344,7 +344,7 @@ nemollm-inference:
         nemollm-infer-container:
           env:
           - name: NGC_API_KEY
-            value: ""
+            value: "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"
 
 nemollm-embedding:
   applicationSpecs:
@@ -353,4 +353,4 @@ nemollm-embedding:
         embedding-container:
           env:
           - name: NGC_API_KEY
-            value: "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"
+            value: "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"
