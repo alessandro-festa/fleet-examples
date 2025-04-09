@@ -20,7 +20,7 @@ applicationSpecs:
       nemollm-infer-container:
         env:
         - name: NGC_API_KEY
-          value: ""
+          value: "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"
         image:
           repository: nvcr.io/nim/meta/llama-3.2-1b-instruct
           tag: 1.1
