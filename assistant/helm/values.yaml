@@ -11,7 +11,7 @@ global:
   ngcImagePullSecretName: ""
 model:
   ngcAPISecret: "ngc-api-secret"
-  ngcAPIKey: "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"
+  ngcAPIKey: "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"
 nvcf:
   dockerRegSecrets: []
   additionalSecrets: []
@@ -235,7 +235,7 @@ retriever-structured:
               of context, you will refrain from replying and politely decline to respond
               to the user.
           - name: NVIDIA_API_KEY
-            value: "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"
+            value: ""
           - name: COLLECTION_NAME
             value: structured_data
           - name: APP_DATABASE_NAME
@@ -335,7 +335,7 @@ ranking-ms:
         ranking-container:
           env:
           - name: NGC_API_KEY
-            value: "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"
+            value: ""
 
 nemollm-inference:
   applicationSpecs:
@@ -344,7 +344,7 @@ nemollm-inference:
         nemollm-infer-container:
           env:
           - name: NGC_API_KEY
-            value: "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"
+            value: ""
 
 nemollm-embedding:
   applicationSpecs:
@@ -353,4 +353,4 @@ nemollm-embedding:
         embedding-container:
           env:
           - name: NGC_API_KEY
-            value: "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"
+            value: ""

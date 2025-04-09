@@ -13,7 +13,6 @@ ollamaUrls:
 persistence:
   enabled: true
   storageClass: local-path
-
 pipelines:
   enabled: false
   persistence:
