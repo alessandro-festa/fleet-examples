@@ -11,7 +11,7 @@ global:
   ngcImagePullSecretName: ""
 model:
   ngcAPISecret: "ngc-api-secret"
-  ngcAPIKey: "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"
+  ngcAPIKey: "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"
 nvcf:
   dockerRegSecrets: []
   additionalSecrets: []
@@ -335,7 +335,7 @@ ranking-ms:
         ranking-container:
           env:
           - name: NGC_API_KEY
-            value: ""
+            value: "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"
 
 nemollm-inference:
   applicationSpecs:
@@ -353,4 +353,4 @@ nemollm-embedding:
         embedding-container:
           env:
           - name: NGC_API_KEY
-            value: ""
+            value: "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"
