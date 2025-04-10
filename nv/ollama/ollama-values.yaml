@@ -12,7 +12,7 @@ specs:
   defaultModel: "llama3.2"
   ollama:
     models:
-      - "llama3.2"
+      - llama3.2
 ingress:
   enabled: false
 persistentVolume:
