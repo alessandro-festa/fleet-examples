@@ -8,6 +8,10 @@
 global:
   imagePullSecrets:
   - application-collection
+  image:
+    registry: dp.apps.rancher.io
+    repository: containers/minio
+    tag: 0.20250408.154124-4.13
 
 Component:
   app-version: 0.0.1

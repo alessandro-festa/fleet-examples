@@ -12,6 +12,11 @@ global:
 model:
   ngcAPISecret: "ngc-api-secret"
   ngcAPIKey: "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"
+  imagePullSecrets:
+  - application-collection
+image:
+  registry: dp.apps.rancher.io
+  repository: containers/open-webui
 nvcf:
   dockerRegSecrets: []
   additionalSecrets: []

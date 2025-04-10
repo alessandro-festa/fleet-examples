@@ -8,6 +8,10 @@
 global:
   imagePullSecrets:
   - application-collection
+  image:
+    registry: dp.apps.rancher.io
+    repository: containers/milvus
+    tag: 2.4.6
 
 Component:
   app-version: 0.0.1
