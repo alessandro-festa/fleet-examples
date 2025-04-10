@@ -1,4 +1,6 @@
 # Custom helm options
+namespace: suseai
+
 helm:
   helmSecretName: basic-auth-secret
   ociRegistry:
