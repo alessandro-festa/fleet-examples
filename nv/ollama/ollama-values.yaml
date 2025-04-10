@@ -9,10 +9,9 @@ specs:
     pullPolicy: IfNotPresent
   ingress:
     enabled: false
-  defaultModel: "llama3.2-vision"
+  defaultModel: "llama3.2"
   ollama:
     models:
-      - "llama3.2-vision"
       - "llama3.2"
 ingress:
   enabled: false
