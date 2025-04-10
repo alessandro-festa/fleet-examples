@@ -38,7 +38,7 @@ applicationSpecs:
         - name: ETCD_SNAPSHOT_COUNT
           value: '50000'
         image:
-          repository: dp.apps.rancher.io/containers
+          repository: dp.apps.rancher.io
           image: etcd
           tag: 3.4.36
         livenessProbe:

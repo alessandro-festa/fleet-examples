@@ -35,7 +35,7 @@ applicationSpecs:
         - name: MINIO_SECRET_KEY
           value: minioadmin
         image:
-          repository: dp.apps.rancher.io/containers
+          repository: dp.apps.rancher.io
           image: minio
           tag: 0.20250408.154124-4.13
         livenessProbe:
