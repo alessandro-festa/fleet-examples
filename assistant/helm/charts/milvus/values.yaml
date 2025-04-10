@@ -44,8 +44,8 @@ applicationSpecs:
         - name: KNOWHERE_GPU_MEM_POOL_SIZE
           value: 2048;4096
         image:
-          repository: dp.apps.rancher.io
-          image: containers/milvus
+          repository: dp.apps.rancher.io/containers
+          image: milvus
           tag: 2.4.6
         ports:
         - containerPort: 19530
