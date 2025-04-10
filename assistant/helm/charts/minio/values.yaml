@@ -5,6 +5,9 @@
 # and any modifications thereto.  Any use, reproduction, disclosure or
 # distribution of this software and related documentation without an express
 # license agreement from NVIDIA CORPORATION is strictly prohibited.
+global:
+  imagePullSecrets:
+  - application-collection
 
 Component:
   app-version: 0.0.1
@@ -32,8 +35,9 @@ applicationSpecs:
         - name: MINIO_SECRET_KEY
           value: minioadmin
         image:
-          repository: minio/minio
-          tag: RELEASE.2024-11-07T00-52-20Z
+          repository: dp.apps.rancher.io
+          image: containers/minio
+          tag: 0.20250408.154124-4.13
         livenessProbe:
           exec:
             command:

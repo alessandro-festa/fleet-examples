@@ -5,6 +5,9 @@
 # and any modifications thereto.  Any use, reproduction, disclosure or
 # distribution of this software and related documentation without an express
 # license agreement from NVIDIA CORPORATION is strictly prohibited.
+global:
+  imagePullSecrets:
+  - application-collection
 
 Component:
   app-version: 0.0.1
@@ -41,8 +44,9 @@ applicationSpecs:
         - name: KNOWHERE_GPU_MEM_POOL_SIZE
           value: 2048;4096
         image:
-          repository: milvusdb/milvus
-          tag: v2.4.15-gpu
+          repository: dp.apps.rancher.io
+          image: containers/milvus
+          tag: 2.4.6
         ports:
         - containerPort: 19530
           name: http1

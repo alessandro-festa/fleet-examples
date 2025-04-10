@@ -5,6 +5,9 @@
 # and any modifications thereto.  Any use, reproduction, disclosure or
 # distribution of this software and related documentation without an express
 # license agreement from NVIDIA CORPORATION is strictly prohibited.
+global:
+  imagePullSecrets:
+  - application-collection
 
 Component:
   app-version: 0.0.1
@@ -35,8 +38,9 @@ applicationSpecs:
         - name: ETCD_SNAPSHOT_COUNT
           value: '50000'
         image:
-          repository: quay.io/coreos/etcd
-          tag: v3.5.17
+          registry: dp.apps.rancher.io
+          repository: containers/etcd
+          tag: 3.4.36
         livenessProbe:
           exec:
             command:
