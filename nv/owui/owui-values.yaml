@@ -2,9 +2,10 @@ global:
   imagePullSecrets:
   - application-collection
 image:
-  registry: dp.apps.rancher.io
-  repository: containers/open-webui
-  tag: 0.5.14
+  # registry: dp.apps.rancher.io
+  # repository: containers/open-webui
+  # tag: 0.5.14
+  repository: ghcr.io/open-webui/open-webui:main
   # repository: ghcr.io/open-webui/open-webui
   # tag: 0.5.10
   pullPolicy: IfNotPresent
