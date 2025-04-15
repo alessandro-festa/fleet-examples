@@ -5,7 +5,9 @@ image:
   # registry: dp.apps.rancher.io
   # repository: containers/open-webui
   # tag: 0.5.14
-  repository: ghcr.io/open-webui/open-webui:main
+  registry: ghcr.io
+  repository: open-webui/open-webui
+  tag: main
   # repository: ghcr.io/open-webui/open-webui
   # tag: 0.5.10
   pullPolicy: IfNotPresent
