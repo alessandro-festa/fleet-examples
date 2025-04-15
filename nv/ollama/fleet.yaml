@@ -7,7 +7,7 @@ helm:
     authSecretName: application-collection
 
   chart: "oci://dp.apps.rancher.io/charts/ollama"
-  version: "0.63.0"
+  version: "1.11.0"
  
   valuesFiles:
     - ollama-values.yaml
