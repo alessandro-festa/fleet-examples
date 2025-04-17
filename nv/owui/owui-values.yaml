@@ -22,7 +22,7 @@ persistence:
   enabled: true
   storageClass: local-path
 ollama:
-  enabled: true
+  enabled: false
 pipelines:
   enabled: true
   persistence:
