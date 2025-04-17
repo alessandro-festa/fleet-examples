@@ -5,9 +5,21 @@ image:
   registry: dp.apps.rancher.io
   repository: containers/open-webui
   tag: 0.5.14
+<<<<<<< Updated upstream
   #registry: ghcr.io
   #repository: open-webui/open-webui
   #tag: main
+=======
+<<<<<<< HEAD
+  # registry: ghcr.io
+  # repository: open-webui/open-webui
+  # tag: main
+=======
+  #registry: ghcr.io
+  #repository: open-webui/open-webui
+  #tag: main
+>>>>>>> 994c98fe348ce7d7402d18f74afbac25a81a7817
+>>>>>>> Stashed changes
   # repository: ghcr.io/open-webui/open-webui
   # tag: 0.5.10
   pullPolicy: IfNotPresent
@@ -17,7 +29,7 @@ persistence:
   enabled: true
   storageClass: local-path
 ollama:
-  enabled: false
+  enabled: true
 pipelines:
   enabled: true
   persistence:
