@@ -1,6 +1,11 @@
 global:
   imagePullSecrets:
   - application-collection
+  ollama:
+  models:
+    pull:
+      - "qwen2.5:1.5b"
+    insecure: false
 specs:
   image:
     registry: dp.apps.rancher.io
@@ -10,9 +15,7 @@ specs:
   ingress:
     enabled: false
   defaultModel: "qwen2.5:1.5b"
-  models:
-    pull:
-      - "qwen2.5:1.5b"
+
 ingress:
   enabled: false
 persistentVolume:
