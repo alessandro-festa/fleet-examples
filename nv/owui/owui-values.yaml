@@ -23,10 +23,6 @@ persistence:
   storageClass: local-path
 ollama:
   enabled: false
-  models:
-    pull:
-      - "qwen2.5:1.5b"
-    insecure: false
 pipelines:
   enabled: true
   persistence:
