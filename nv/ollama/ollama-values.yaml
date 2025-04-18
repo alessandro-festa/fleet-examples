@@ -9,12 +9,11 @@ specs:
     pullPolicy: IfNotPresent
   ingress:
     enabled: false
-  defaultModel: "llama3.2"
+  defaultModel: "qwen2.5:1.5b"
   ollama:
     models:
       pull:
-        - "llama3.2"
-        - "gemma3"
+       - "qwen2.5:1.5b"
 ingress:
   enabled: false
 persistentVolume:
