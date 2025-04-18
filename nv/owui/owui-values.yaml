@@ -19,7 +19,6 @@ image:
 ollamaUrls:
 - http://suseai-nv-ollama.suseai.svc.cluster.local:11434
 persistence:
-  enabled: false
   storageClass: local-path
 ollama:
   enabled: false

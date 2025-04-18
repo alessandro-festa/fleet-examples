@@ -10,13 +10,10 @@ specs:
   ingress:
     enabled: false
   defaultModel: "qwen2.5:1.5b"
-  ollama:
-    models:
-      pull:
-       - "qwen2.5:1.5b"
-      insecure: false
+  models:
+    pull:
+      - "qwen2.5:1.5b"
 ingress:
   enabled: false
 persistentVolume:
-  enabled: false
   storageClass: local-path
