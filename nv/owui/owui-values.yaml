@@ -19,13 +19,18 @@ image:
 ollamaUrls:
 - http://suseai-nv-ollama.suseai.svc.cluster.local:11434
 persistence:
-  enabled: true
+  enabled: false
   storageClass: local-path
 ollama:
   enabled: false
+  models:
+    pull:
+      - "qwen2.5:1.5b"
+    insecure: false
 pipelines:
   enabled: true
   persistence:
+    enabled: false
     storageClass: local-path
 tika:
   enabled: True
@@ -52,7 +57,7 @@ extraEnvVars:
 - name: OPENAI_API_KEY
   value: "0p3n-w3bu!"
 - name: DEFAULT_MODELS
-  value: "llama3.2"
+  value: ""
 - name: DEFAULT_USER_ROLE
   value: "user"
 - name: WEBUI_NAME

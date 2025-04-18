@@ -14,8 +14,9 @@ specs:
     models:
       pull:
        - "qwen2.5:1.5b"
+      insecure: false
 ingress:
   enabled: false
 persistentVolume:
-  enabled: true
+  enabled: false
   storageClass: local-path

@@ -5,11 +5,13 @@ cluster:
   enabled: False
 standalone:
   persistence:
+    enabled: false
     persistentVolumeClaim:
       storageClass: local-path
 etcd:
   replicaCount: 1
   persistence:
+    enabled: false
     storageClassName: local-path
 minio:
   mode: standalone
@@ -17,6 +19,7 @@ minio:
   rootUser: "admin"
   rootPassword: "adminminio"
   persistence:
+    enabled: false
     storageClass: local-path
   resources:
     requests:
@@ -34,7 +37,7 @@ kafka:
       controller:
         protocol: 'PLAINTEXT'
   persistence:
-    enabled: true
+    enabled: false
     annotations: {}
     labels: {}
     existingClaim: ""
