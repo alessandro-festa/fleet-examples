@@ -47,7 +47,7 @@ service:
 # -- OpenAI base API URL to use. Defaults to the Pipelines service endpoint when Pipelines are enabled, and "https://api.openai.com/v1" if Pipelines are not enabled and this value is blank
 openaiBaseApiUrl: ""
 
-tool_server_connections: {
+toolServerConnection: {
       "url": "http://mcpo-service.suseai.svc.cluster.local:8000/kubernetes",
       "path": "string",
       "auth_type": "bearer",
