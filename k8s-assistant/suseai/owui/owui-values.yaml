@@ -65,6 +65,6 @@ extraEnvVars:
   value: "milvus"
 - name: MILVUS_URI
   value: http://suseai-k8s-assistant-suseai-milvus.suseai.svc.cluster.local:19530
-- name: TOOLS
+- name: TOOLS_SERVER_URI
   value: http://mcpo-service.suseai.svc.cluster.local:8000/kubernetes
 
