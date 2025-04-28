@@ -47,6 +47,14 @@ service:
 # -- OpenAI base API URL to use. Defaults to the Pipelines service endpoint when Pipelines are enabled, and "https://api.openai.com/v1" if Pipelines are not enabled and this value is blank
 openaiBaseApiUrl: ""
 
+tool_server_connections: {
+      "url": "http://mcpo-service.suseai.svc.cluster.local:8000/kubernetes",
+      "path": "string",
+      "auth_type": "bearer",
+      "key": "top-secret",
+      "config": {},
+      "additionalProp1": {}
+    }
 
 # -- Env vars added to the Open WebUI deployment. Most up-to-date environment variables can be found here: https://docs.openwebui.com/getting-started/env-configuration/
 extraEnvVars:
@@ -69,17 +77,7 @@ extraEnvVars:
   value: "milvus"
 - name: MILVUS_URI
   value: http://suseai-k8s-assistant-suseai-milvus.suseai.svc.cluster.local:19530
-- name: TOOL_SERVER_CONNECTIONS
-  value:"TOOL_SERVER_CONNECTIONS": [
-    {
-      "url": "http://mcpo-service.suseai.svc.cluster.local:8000/kubernetes",
-      "path": "string",
-      "auth_type": "bearer",
-      "key": "top-secret",
-      "config": {},
-      "additionalProp1": {}
-    }
-  ]
+
 
 
 
