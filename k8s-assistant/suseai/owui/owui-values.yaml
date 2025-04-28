@@ -70,16 +70,10 @@ extraEnvVars:
   value: "milvus"
 - name: MILVUS_URI
   value: http://suseai-k8s-assistant-suseai-milvus.suseai.svc.cluster.local:19530
-- name: TOOLSERVERCONNECTION
-  value: {
-      "url": "http://mcpo-service.suseai.svc.cluster.local:8000/kubernetes",
-      "path": "string",
-      "auth_type": "bearer",
-      "key": "top-secret",
-      "config": {},
-      "additionalProp1": {}
-    }
-
+- name: TOOLSERVERCONNECTION_URL
+  value: "http://mcpo-service.suseai.svc.cluster.local:8000/kubernetes"
+- name: TOOLSERVERCONNECTION_KEY
+  value: "top-secret"
 
 
 
