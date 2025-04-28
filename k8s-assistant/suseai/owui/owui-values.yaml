@@ -50,7 +50,7 @@ openaiBaseApiUrl: ""
 extraEnvVars:
   # -- Default API key value for Pipelines. Should be updated in a production deployment, or be changed to the required API key if not using Pipelines
 - name: ENV
-  value: dev
+  value: "dev"
 - name: OPENAI_API_KEY
   value: "0p3n-w3bu!"
 - name: DEFAULT_MODELS
