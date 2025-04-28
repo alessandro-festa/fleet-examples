@@ -37,4 +37,5 @@ ollama:
           MESSAGE assistant yes, here's a list of pods in each namespace that are not in healthy status
           MESSAGE user Can you list namespaces I have in my cluster?
           MESSAGE assistant yes, here it is the list of namespaces
-    run: suseai-k8s
+    run: 
+      - suseai-k8s
