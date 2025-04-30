@@ -58,9 +58,6 @@ extraEnvVars:
     - path: "openapi.json"
     - auth_type: "bearer"
     - key: "top-secret"
-
-
-
 - name: OPENAI_API_KEY
   value: "0p3n-w3bu!"
 - name: DEFAULT_MODELS
