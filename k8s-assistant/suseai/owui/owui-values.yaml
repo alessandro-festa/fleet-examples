@@ -53,11 +53,15 @@ extraEnvVars:
 - name: ENV
   value: "dev"
 - name: TOOL_SERVER_CONNECTIONS
-  values: 
-    - url: "http://mcpo.service"
-    - path: "openapi.json"
-    - auth_type: "bearer"
-    - key: "top-secret"
+  values: [
+    {mcpo-server:{
+      "url":"http://mcpo.service",
+      "path":"openapi.json",
+      "auth_key":"top-secret"  
+      }
+    }
+  ]
+
 - name: OPENAI_API_KEY
   value: "0p3n-w3bu!"
 - name: DEFAULT_MODELS
