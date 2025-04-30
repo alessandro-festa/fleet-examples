@@ -54,11 +54,12 @@ extraEnvVars:
   value: "dev"
 - name: TOOL_SERVER_CONNECTIONS
   values: [
-    {mcpo-server:{
-      "url":"http://mcpo.service",
-      "path":"openapi.json",
-      "auth_key":"top-secret"  
-      }
+    {
+      mcpo-server: {
+        "url":"http://mcpo.service",
+        "path":"openapi.json",
+        "auth_key":"top-secret"    
+        }
     }
   ]
 
