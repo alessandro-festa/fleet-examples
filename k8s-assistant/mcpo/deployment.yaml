@@ -42,7 +42,8 @@ data:
   config.json: |
     {
       "mcpServers": {
-        "kubernetes": {
+        "mcp_sse": {
           "url": "http://k8s-mcp-service.suseai.svc.cluster.local:8000/sse"
-        }
+        } // SSE MCP Server
+      }
     }
