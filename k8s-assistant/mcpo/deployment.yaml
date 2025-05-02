@@ -50,7 +50,7 @@ data:
           ]
         },
       "mcp_sse": {
-      "url": "http://localhost:8000/sse"
-        } // SSE MCP Ser
+        "url": "http://localhost:8000/sse"
+        } 
       }
     }
