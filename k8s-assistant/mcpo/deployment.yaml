@@ -49,11 +49,8 @@ data:
             "kubernetes-mcp-server@latest"
           ]
         },
-      "mcp_k8s": {
-          "command": "npx",
-          "args": [
-            "@strowk/mcp-k8s"
-          ]
-        }
+      "mcp_sse": {
+      "url": "http://localhost:8000/sse"
+        } // SSE MCP Ser
       }
     }
