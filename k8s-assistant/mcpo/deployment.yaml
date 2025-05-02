@@ -50,7 +50,7 @@ data:
           ]
         },
       "mcp_sse": {
-        "url": "http://localhost:8000/sse"
+        "url": "http://192.168.1.74:8000/sse"
         } 
       }
     }
