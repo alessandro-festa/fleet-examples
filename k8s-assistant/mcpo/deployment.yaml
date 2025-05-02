@@ -20,14 +20,15 @@ spec:
           ports:
             - containerPort: 8000
           command: ["mcpo"] # Entrypoint of the container
-          args: 
+          args:
+            - "port"
+            - "8002"
             - "--server-type"
             - "sse"
             - "--api-key"
             - "top-secret"
-            - "-- http://k8s-mcp-service.suseai.svc.cluster.local:8001/sse"
-            # - "--config"
-            # - "/etc/config/config.json"
+            - "--config"
+            - "/etc/config/config.json"
           volumeMounts:
             - name: config-volume
               mountPath: /etc/config
