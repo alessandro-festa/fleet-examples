@@ -17,18 +17,26 @@ spec:
       containers:
         - name: k8s-mcp-server
           image: ghcr.io/alexei-led/k8s-mcp-server:latest
-          ports:
-            - containerPort: 8000
           env:
           - name: K8S_MCP_TRANSPORT
-            value: sse
+            value: "sse"
           - name: K8S_MCP_SECURITY_MODE
-            value: permissive
+            value: "permissive"
           - name: K8S_MCP_TIMEOUT
-            value: 600
-          volumeMounts:
-            - name: config-volume
-              mountPath: k8s-mcp-config
+            value: "600"
+          ports:
+            - containerPort: 8000
+          resources:
+            requests:
+              memory: "64Mi"
+              cpu: "250m"
+            limits:
+              memory: "128Mi"
+              cpu: "500m"
+
+      volumeMounts:
+        - name: config-volume
+          mountPath: k8s-mcp-config
       volumes:
         - name: config-volume
           configMap:
