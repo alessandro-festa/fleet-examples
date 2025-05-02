@@ -41,16 +41,7 @@ metadata:
 data:
   config.json: |
     {
-      "mcpServers": {
-        "kubernetes": {
-          "command": "npx",
-          "args": [
-            "-y",
-            "kubernetes-mcp-server@latest"
-          ]
-        } 
+      "kubernetes": {
+        "url": "http://k8s-mcp-service.suseai.svc.cluster.local:8000/sse"
       }
     }
-# "mcp_sse": {
-#   "url": "http://192.168.1.74:8000/sse"
-#   }
