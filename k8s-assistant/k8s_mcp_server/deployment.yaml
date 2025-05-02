@@ -33,10 +33,9 @@ spec:
             limits:
               memory: "128Mi"
               cpu: "500m"
-
-      volumeMounts:
-        - name: config-volume
-          mountPath: /home/appuser/.kube
+          volumeMounts:
+            - name: config-volume
+              mountPath: /home/appuser/.kube
       volumes:
         - name: config-volume
           configMap:
