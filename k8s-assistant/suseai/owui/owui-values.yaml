@@ -52,22 +52,6 @@ extraEnvVars:
   # -- Default API key value for Pipelines. Should be updated in a production deployment, or be changed to the required API key if not using Pipelines
 - name: ENV
   value: "dev"
-- name: TOOL_SERVER_CONNECTIONS
-  values:
-    { "url": "http://mcpo-service2.suseai.svc.cluster.local:8000/mcp_k8s", 
-      "path": "openapi.json", 
-      "auth_type": "bearer", 
-      "key": "top-secret", 
-      "config": 
-        {
-          "enable": true, 
-          "access_control": 
-          {"read": 
-            {"group_ids": [], "user_ids": []}, 
-            "write": {"group_ids": [], 
-            "user_ids": []}}}}
-
-
 - name: OPENAI_API_KEY
   value: "0p3n-w3bu!"
 - name: DEFAULT_MODELS
