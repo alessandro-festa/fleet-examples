@@ -41,7 +41,8 @@ metadata:
 data:
   config.json: |
     {
-      "kubernetes": {
-        "url": "http://k8s-mcp-service.suseai.svc.cluster.local:8000/sse"
-      }
+      "mcpServers": {
+        "kubernetes": {
+          "url": "http://k8s-mcp-service.suseai.svc.cluster.local:8000/sse"
+        }
     }
