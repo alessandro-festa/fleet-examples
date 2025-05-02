@@ -25,8 +25,9 @@ spec:
             - "sse"
             - "--api-key"
             - "top-secret"
-            - "--config"
-            - "/etc/config/config.json"
+            - "-- http://k8s-mcp-service.suseai.svc.cluster.local:8001/sse"
+            # - "--config"
+            # - "/etc/config/config.json"
           volumeMounts:
             - name: config-volume
               mountPath: /etc/config
@@ -45,7 +46,7 @@ data:
     {
       "mcpServers": {
         "mcp_sse": {
-          "url": "http://k8s-mcp-service.suseai.svc.cluster.local:8000/sse"
+          "url": "http://k8s-mcp-service.suseai.svc.cluster.local:8001/sse"
         } 
       }
     }
