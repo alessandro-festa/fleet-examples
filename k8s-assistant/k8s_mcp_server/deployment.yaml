@@ -36,7 +36,7 @@ spec:
 
       volumeMounts:
         - name: config-volume
-          mountPath: k8s-mcp-config
+          mountPath: /home/appuser/.kube
       volumes:
         - name: config-volume
           configMap:

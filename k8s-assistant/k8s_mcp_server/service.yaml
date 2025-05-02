@@ -5,7 +5,7 @@ metadata:
   namespace: suseai
 spec:
   selector:
-    app: k8s-mcp
+    app: k8s_mcp
   ports:
     - protocol: TCP
       port: 8000
