@@ -19,7 +19,7 @@ spec:
           image: ghcr.io/alexei-led/k8s-mcp-server:latest
           env:
           - name: K8S_MCP_TRANSPORT
-            value: "sse"
+            value: "stdio"
           - name: K8S_MCP_SECURITY_MODE
             value: "permissive"
           - name: K8S_MCP_TIMEOUT
