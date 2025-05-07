@@ -40,8 +40,11 @@ data:
   config.json: |
     {
       "mcpServers": {
-        "mcp_sse": {
-          "url": "http://k8s-mcp-service.suseai.svc.cluster.local:8001/sse"
-            }
-      }
+        "kubernetes": {
+          "command": "uv",
+          "args": ["--directory", "/servers/k8s-multicluster-mcp", "run", "app.py"],
+          "env": {
+            "KUBECONFIG_DIR": "/kubeconfigs"
+          }
+        }
     }
