@@ -50,9 +50,9 @@ data:
           "args": ["--directory", "/servers/k8s-multicluster-mcp", "run", "app.py"],
           "env": {
             "KUBECONFIG_DIR": "/kubeconfigs"
-            }
           }
         }
+      }
     }
 ---
 apiVersion: v1
