@@ -48,11 +48,8 @@ data:
     {
       "mcpServers": {
         "kubernetes": {
-          "command": "python",
-          "args": ["-m", "kubectl_mcp_tool.minimal_wrapper"],
-          "env": {
-            "KUBECONFIG": "/kubeconfig/default"
-          }
+          "command": "npx",
+          "args": ["mcp-server-kubernetes"]
         }
       }
     }
