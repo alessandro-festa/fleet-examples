@@ -19,8 +19,10 @@ spec:
           image: ghcr.io/open-webui/mcpo:latest
           ports:
             - containerPort: 8000
-          command: ["pip install kubectl-mcp-tool & mcpo"] # Entrypoint of the container
+          command: ["/bin/bash"] # Entrypoint of the container
           args:
+            - "install kubectl-mcp-tool &"
+            - "mcpo"
             - "--config"
             - "/etc/config/config.json"
           volumeMounts:
