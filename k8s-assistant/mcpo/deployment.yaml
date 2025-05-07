@@ -42,11 +42,11 @@ data:
       "mcpServers": {
         "mcp_sse": {
           "url": "http://k8s-mcp-service.suseai.svc.cluster.local:8001/sse"
-        },
+            },
         "mcp_stdio": {
           "command": "python",
           "args": [
-            "mcp_stdio.py"
+          "mcp_stdio.py"
           ]
         }
       }
