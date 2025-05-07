@@ -45,7 +45,7 @@ data:
     {
       "mcpServers": {
         "mcp_sse": {
-          "url": "http://k8s-mcp-service.suseai.svc.cluster.local:8000/sse"
+          "url": "http://k8s-mcp-service.suseai.svc.cluster.local:8001/sse"
         } 
       }
     }

@@ -8,6 +8,6 @@ spec:
     app: k8s_mcp
   ports:
     - protocol: TCP
-      port: 8000
+      port: 8001
       targetPort: 8000
   type: ClusterIP # Or ClusterIP if you don't need external access
