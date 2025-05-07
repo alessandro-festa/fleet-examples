@@ -21,10 +21,6 @@ spec:
             - containerPort: 8000
           command: ["mcpo"] # Entrypoint of the container
           args:
-            - "port"
-            - "8002"
-            - "--server-type"
-            - "sse"
             - "--config"
             - "/etc/config/config.json"
           volumeMounts:
