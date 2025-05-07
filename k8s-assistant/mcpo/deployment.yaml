@@ -21,7 +21,7 @@ spec:
             - containerPort: 8000
           command: ["/bin/bash"] # Entrypoint of the container
           args:
-            - "pip install kubectl-mcp-tool &"
+            - "pip install kubectl-mcp-tool"
             - "mcpo"
             - "--config"
             - "/etc/config/config.json"
