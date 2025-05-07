@@ -46,10 +46,10 @@ data:
     {
       "mcpServers": {
         "kubernetes": {
-          "command": "uv",
-          "args": ["--directory", "/servers/k8s-multicluster-mcp", "run", "app.py"],
+          "command": "python",
+          "args": ["-m", "kubectl_mcp_tool.minimal_wrapper"],
           "env": {
-            "KUBECONFIG_DIR": "/kubeconfigs"
+            "KUBECONFIG": "/kubeconfig/default"
           }
         }
       }
@@ -61,7 +61,7 @@ metadata:
   name: kube-config
   namespace: suseai
 data:
-  kubeconfig: |
+  default: |
     apiVersion: v1
     clusters:
     - cluster:
