@@ -22,6 +22,7 @@ ollama:
   models:
     pull:
       - qwen2.5:0.5b-instruct
+      - llama3.2
     create:
       - name: suseai-k8s
         template: |
