@@ -64,12 +64,12 @@ extraEnvVars:
   value: "SUSE AI"
 - name: GLOBAL_LOG_LEVEL
   value: INFO
-- name: RAG_EMBEDDING_MODEL
-  value: "sentence-transformers/all-MiniLM-L6-v2"
-- name: VECTOR_DB
-  value: "milvus"
-- name: MILVUS_URI
-  value: http://suseai-k8s-assistant-suseai-milvus.suseai.svc.cluster.local:19530
+# - name: RAG_EMBEDDING_MODEL
+#   value: "sentence-transformers/all-MiniLM-L6-v2"
+# - name: VECTOR_DB
+#   value: "milvus"
+# - name: MILVUS_URI
+#   value: http://suseai-k8s-assistant-suseai-milvus.suseai.svc.cluster.local:19530
 
 
 
