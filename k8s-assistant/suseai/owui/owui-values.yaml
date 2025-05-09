@@ -53,7 +53,26 @@ extraEnvVars:
 - name: ENV
   value: "dev"
 - name: TOOL_SERVER_CONNECTIONS
-  value: {"http://mcpo-service.suseai.svc.cluster.local:8000/kubernetes"}
+  value: {
+      "url": "http://mcpo-service.suseai.svc.cluster.local:8000/kubernetes",
+      "path": "openapi.json",
+      "auth_type": "bearer",
+      "key": "top-secret",
+      "config": {
+        "enable": true,
+        "access_control": {
+          "read": {
+            "group_ids": [],
+            "user_ids": []
+          },
+          "write": {
+            "group_ids": [],
+            "user_ids": []
+          }
+        }
+      }
+    }
+
 - name: OPENAI_API_KEY
   value: "0p3n-w3bu!"
 - name: DEFAULT_MODELS
