@@ -52,7 +52,7 @@ extraEnvVars:
   # -- Default API key value for Pipelines. Should be updated in a production deployment, or be changed to the required API key if not using Pipelines
 - name: ENV
   value: "dev"
-- name: TOOL_SERVER_CONFIGURATIONS
+- name: TOOL_SERVER_CONNECTIONS
   value: "[http://mcpo-service.suseai.svc.cluster.local:8000/kubernetes]"
 - name: OPENAI_API_KEY
   value: "0p3n-w3bu!"
