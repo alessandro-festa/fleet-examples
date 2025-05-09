@@ -46,7 +46,10 @@ data:
       "mcpServers": {
         "kubernetes": {
           "command": "npx",
-          "args": ["mcp-server-kubernetes"]
+          "args": [
+            "-y",
+            "kubernetes-mcp-server@latest"
+          ]
         }
       }
     }

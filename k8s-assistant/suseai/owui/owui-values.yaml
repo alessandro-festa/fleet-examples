@@ -9,17 +9,7 @@ image:
   registry: ghcr.io
   repository: open-webui/open-webui
   tag: main
-  command: ["curl"] # Entrypoint of the container
-  args:
-    - "-i -X POST http://localhost/api/tools/config "
-    - "--data-binary '/etc/config/config.json'"
-  volumeMounts:
-    - name: config-volume
-      mountPath: /etc/config
-  volumes:
-  - name: config-volume
-    configMap:
-      name: mcpo-config
+
   # registry: ghcr.io
   # repository: open-webui/open-webui
   # tag: main
@@ -63,7 +53,7 @@ extraEnvVars:
 - name: ENV
   value: "dev"
 - name: TOOL_SERVER_CONNECTIONS
-  value: "http://mcpo-service.suseai.svc.cluster.local:8000/kubernetes"
+  value: ["http://mcpo-service.suseai.svc.cluster.local:8000/kubernetes"]
 - name: OPENAI_API_KEY
   value: "0p3n-w3bu!"
 - name: DEFAULT_MODELS
@@ -81,21 +71,6 @@ extraEnvVars:
 - name: MILVUS_URI
   value: http://suseai-k8s-assistant-suseai-milvus.suseai.svc.cluster.local:19530
 
----
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: mcpo-config
-  namespace: suseai
-data:
-  config.json: |
-    {
-      "mcpServers": {
-        "mcp_sse": {
-          "url": "http://k8s-mcp-service.suseai.svc.cluster.local:8000/sse"
-        } 
-      }
-    }
 
 
 
