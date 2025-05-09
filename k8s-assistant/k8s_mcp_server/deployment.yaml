@@ -21,6 +21,8 @@ spec:
             - containerPort: 8000
           command: ["mcpo"] # Entrypoint of the container
           args: 
+            - "--port"
+            - "8000"
             - "--api-key"
             - "top-secret"
             - "--config"
