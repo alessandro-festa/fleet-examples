@@ -19,24 +19,21 @@ spec:
           image: ghcr.io/open-webui/mcpo:latest
           ports:
             - containerPort: 8000
-          command: ["/bin/bash -c "] # Entrypoint of the container
-          args:
-            - "pip install kubectl-mcp-tool"
-            - "mcpo"
+          command: ["mcpo"] # Entrypoint of the container
+          args: 
+            - "--port"
+            - "8000"
+            - "--api-key"
+            - "top-secret"
             - "--config"
             - "/etc/config/config.json"
           volumeMounts:
             - name: config-volume
               mountPath: /etc/config
-            - name: kube-volume
-              mountPath: /kubeconfig
       volumes:
         - name: config-volume
           configMap:
             name: mcpo-config
-        - name: kube-volume
-          configMap:
-            name: kube-config
 ---
 apiVersion: v1
 kind: ConfigMap
@@ -53,31 +50,3 @@ data:
         }
       }
     }
----
-apiVersion: v1
-kind: ConfigMap
-metadata:
-  name: kube-config
-  namespace: suseai
-data:
-  default: |
-    apiVersion: v1
-    clusters:
-    - cluster:
-        certificate-authority-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUJkekNDQVIyZ0F3SUJBZ0lCQURBS0JnZ3Foa2pPUFFRREFqQWpNU0V3SHdZRFZRUUREQmhyTTNNdGMyVnkKZG1WeUxXTmhRREUzTkRVME1UUTVNekF3SGhjTk1qVXdOREl6TVRNeU9EVXdXaGNOTXpVd05ESXhNVE15T0RVdwpXakFqTVNFd0h3WURWUVFEREJock0zTXRjMlZ5ZG1WeUxXTmhRREUzTkRVME1UUTVNekF3V1RBVEJnY3Foa2pPClBRSUJCZ2dxaGtqT1BRTUJCd05DQUFRUU1ubGR6SFlGZzMxVWV4OUY4QytHc3o2QmY3VHkyYmFkajFqQ2Z2YmQKRWNaTWd0S1hCZ29ySXFiajJYR0dFVVBrSnl3M3BZMkZyWWw4T2VKeVVVVXhvMEl3UURBT0JnTlZIUThCQWY4RQpCQU1DQXFRd0R3WURWUjBUQVFIL0JBVXdBd0VCL3pBZEJnTlZIUTRFRmdRVVl3Szh5QkRaMlA5RjlRdUJMSVM4Cjg2NTZkcmt3Q2dZSUtvWkl6ajBFQXdJRFNBQXdSUUlnZkpuRVcvNllPcnV0dW5aRVhWb0g0RHhOZitGUUJXSkgKaFhhRmk4YXR1ak1DSVFEWEFHbHFPVXlqbTJQN3ZmUk14Ky83UENFbVpMeS9JbFhHQXhEdC9NY0pBQT09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K
-        server: https://127.0.0.1:6443
-      name: default
-    contexts:
-    - context:
-        cluster: default
-        user: default
-      name: default
-    current-context: default
-    kind: Config
-    preferences: {}
-    users:
-    - name: default
-      user:
-        client-certificate-data: LS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUJrVENDQVRlZ0F3SUJBZ0lJYXZNaU9JUXNrbzB3Q2dZSUtvWkl6ajBFQXdJd0l6RWhNQjhHQTFVRUF3d1kKYXpOekxXTnNhV1Z1ZEMxallVQXhOelExTkRFME9UTXdNQjRYRFRJMU1EUXlNekV6TWpnMU1Gb1hEVEkyTURReQpNekV6TWpnMU1Gb3dNREVYTUJVR0ExVUVDaE1PYzNsemRHVnRPbTFoYzNSbGNuTXhGVEFUQmdOVkJBTVRESE41CmMzUmxiVHBoWkcxcGJqQlpNQk1HQnlxR1NNNDlBZ0VHQ0NxR1NNNDlBd0VIQTBJQUJDcnhIdmJITGFOWldGOGIKQ2psenNXNzgyQ1IvU3NsZHEwdGJ2MkZRSVROK2RJYmFhWHV3QlFJR3hmK0pCYWhJZkxmY3FIOHNJU3dnOTRBRApzSU5BQzhlalNEQkdNQTRHQTFVZER3RUIvd1FFQXdJRm9EQVRCZ05WSFNVRUREQUtCZ2dyQmdFRkJRY0RBakFmCkJnTlZIU01FR0RBV2dCVFh5eG5EdXlITVBrTWZydzA4TUtIVTJuWUFEakFLQmdncWhrak9QUVFEQWdOSUFEQkYKQWlFQXpHVTNkUEcyUGpYei9kUy9YdlNxMm9hWWRWT214K0JjMERyWUE1VGttb29DSUJVWFlPMVdLLzMvR3ZMVApOaFlzNUQ0VHBwcy9XNk5WVmRYSDBNTWo3dkMrCi0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0KLS0tLS1CRUdJTiBDRVJUSUZJQ0FURS0tLS0tCk1JSUJkekNDQVIyZ0F3SUJBZ0lCQURBS0JnZ3Foa2pPUFFRREFqQWpNU0V3SHdZRFZRUUREQmhyTTNNdFkyeHAKWlc1MExXTmhRREUzTkRVME1UUTVNekF3SGhjTk1qVXdOREl6TVRNeU9EVXdXaGNOTXpVd05ESXhNVE15T0RVdwpXakFqTVNFd0h3WURWUVFEREJock0zTXRZMnhwWlc1MExXTmhRREUzTkRVME1UUTVNekF3V1RBVEJnY3Foa2pPClBRSUJCZ2dxaGtqT1BRTUJCd05DQUFSbHRFTkI2Qm56QnNuMXlPSzFaQ3RvS052Sjh1Z2pyQzA2L1huQUs5a2EKcEs4cVE2SzFmaGREcjkzRUY5WDZHL256eWk2WGN3NDRROXBKN2tJSm53a0pvMEl3UURBT0JnTlZIUThCQWY4RQpCQU1DQXFRd0R3WURWUjBUQVFIL0JBVXdBd0VCL3pBZEJnTlZIUTRFRmdRVTE4c1p3N3NoekQ1REg2OE5QRENoCjFOcDJBQTR3Q2dZSUtvWkl6ajBFQXdJRFNBQXdSUUloQU5oN29kZnpqajVQUzFDZzhrKzdPb0hPWG5CZzNQY2MKNisxU2hNYllqd3NNQWlCUmxNMC9FcDNSNTJBbE92UElrR3lyTEFSRnNjd1lQSGRBQ09hNk9vMlNaZz09Ci0tLS0tRU5EIENFUlRJRklDQVRFLS0tLS0K
-        client-key-data: LS0tLS1CRUdJTiBFQyBQUklWQVRFIEtFWS0tLS0tCk1IY0NBUUVFSUNSem9McUFqUlZQNFM4ckFrNjlNQkI5ckZyWmxtQ3RVMUFrRTNpeE12dCtvQW9HQ0NxR1NNNDkKQXdFSG9VUURRZ0FFS3ZFZTlzY3RvMWxZWHhzS09YT3hidnpZSkg5S3lWMnJTMXUvWVZBaE0zNTBodHBwZTdBRgpBZ2JGLzRrRnFFaDh0OXlvZnl3aExDRDNnQU93ZzBBTHh3PT0KLS0tLS1FTkQgRUMgUFJJVkFURSBLRVktLS0tLQo=
-
