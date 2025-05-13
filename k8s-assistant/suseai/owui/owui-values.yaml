@@ -52,15 +52,6 @@ extraEnvVars:
   # -- Default API key value for Pipelines. Should be updated in a production deployment, or be changed to the required API key if not using Pipelines
 - name: ENV
   value: "dev"
-- name: TOOL_SERVER_CONNECTIONS
-  value: |
-    "[{"url":"http://mcpo-service.suseai.svc.cluster.local:8000/kubernetes",
-      "path": "/openapi.json",
-      "auth_type": "Bearer",
-      "key": "top-secret",
-      "config": "{}",
-      "additionalProp1": "{}"
-    }],"
 - name: OPENAI_API_KEY
   value: "0p3n-w3bu!"
 - name: DEFAULT_MODELS
@@ -71,12 +62,12 @@ extraEnvVars:
   value: "SUSE AI"
 - name: GLOBAL_LOG_LEVEL
   value: INFO
-# - name: RAG_EMBEDDING_MODEL
-#   value: "sentence-transformers/all-MiniLM-L6-v2"
-# - name: VECTOR_DB
-#   value: "milvus"
-# - name: MILVUS_URI
-#   value: http://suseai-k8s-assistant-suseai-milvus.suseai.svc.cluster.local:19530
+- name: RAG_EMBEDDING_MODEL
+  value: "sentence-transformers/all-MiniLM-L6-v2"
+- name: VECTOR_DB
+  value: "milvus"
+- name: MILVUS_URI
+  value: http://suseai-k8s-assistant-suseai-milvus.suseai.svc.cluster.local:19530
 
 
 

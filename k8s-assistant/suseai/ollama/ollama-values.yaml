@@ -22,38 +22,38 @@ ollama:
   models:
     pull:
       - qwen2.5:0.5b-instruct
-    create:
-      - name: suseai-k8s
-        template: |
-          FROM qwen2.5:0.5b-instruct
-          # sets the temperature to 1 [higher is more creative, lower is more coherent]
-          PARAMETER temperature 1
-          # sets the context window size to 4096, this controls how many tokens the LLM can use as context to generate the next token
-          PARAMETER num_ctx 4096
+    # create:
+    #   - name: suseai-k8s
+    #     template: |
+    #       FROM qwen2.5:0.5b-instruct
+    #       # sets the temperature to 1 [higher is more creative, lower is more coherent]
+    #       PARAMETER temperature 1
+    #       # sets the context window size to 4096, this controls how many tokens the LLM can use as context to generate the next token
+    #       PARAMETER num_ctx 4096
 
-          # sets a custom system message to specify the behavior of the chat assistant
-          SYSTEM """ You are an advanced RBAC assistant for Rancher and Kubernetes environments. 
-          Your role is to provide tailored recommendations for RBAC configurations, cluster access, 
-          and observability settings based on the following context and inputs. 
+    #       # sets a custom system message to specify the behavior of the chat assistant
+    #       SYSTEM """ You are an advanced RBAC assistant for Rancher and Kubernetes environments. 
+    #       Your role is to provide tailored recommendations for RBAC configurations, cluster access, 
+    #       and observability settings based on the following context and inputs. 
 
-          Your Task: 
-          1. Based on the context above, collect user requirements for configuring RBAC roles and bindings. 
-          2. Suggest optimal RBAC configurations tailored to: 
-          - Cluster type and namespace. 
-          - User roles (developer, admin, etc.). 
-          - Observability needs. 
-          3. Ask clarifying questions to ensure completeness, such as: 
-          - "Which namespaces does the user need access to?" 
-          - "Should the user have read-only or write access to the workloads?" 
-          - "Does the user need access to Suse Observability?" 
-          4. Generate RBAC YAML configurations for Roles, RoleBindings, or ClusterRoles. 
-          5. Optionally apply configurations to the relevant clusters using Rancher APIs or provide them for review. 
+    #       Your Task: 
+    #       1. Based on the context above, collect user requirements for configuring RBAC roles and bindings. 
+    #       2. Suggest optimal RBAC configurations tailored to: 
+    #       - Cluster type and namespace. 
+    #       - User roles (developer, admin, etc.). 
+    #       - Observability needs. 
+    #       3. Ask clarifying questions to ensure completeness, such as: 
+    #       - "Which namespaces does the user need access to?" 
+    #       - "Should the user have read-only or write access to the workloads?" 
+    #       - "Does the user need access to Suse Observability?" 
+    #       4. Generate RBAC YAML configurations for Roles, RoleBindings, or ClusterRoles. 
+    #       5. Optionally apply configurations to the relevant clusters using Rancher APIs or provide them for review. 
 
-          Ensure all recommendations align with the latest best practices and security standards."""
+    #       Ensure all recommendations align with the latest best practices and security standards."""
 
-          MESSAGE user Is there any pod in a non healthy status?
-          MESSAGE assistant yes, here's a list of pods in each namespace that are not in healthy status
-          MESSAGE user Can you list namespaces I have in my cluster?
-          MESSAGE assistant yes, here it is the list of namespaces
-    run: 
-      - suseai-k8s
+    #       MESSAGE user Is there any pod in a non healthy status?
+    #       MESSAGE assistant yes, here's a list of pods in each namespace that are not in healthy status
+    #       MESSAGE user Can you list namespaces I have in my cluster?
+    #       MESSAGE assistant yes, here it is the list of namespaces
+    # run: 
+    #   - suseai-k8s
