@@ -68,6 +68,10 @@ extraEnvVars:
   value: "milvus"
 - name: MILVUS_URI
   value: http://suseai-k8s-assistant-suseai-milvus.suseai.svc.cluster.local:19530
+- name: ENABLE_OTEL
+  value: "true"
+- name: OTEL_EXPORTER_OTLP_ENDPOINT
+  value: "http://suse-observability-otel-collector:4317"
 
 
 
