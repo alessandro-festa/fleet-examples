@@ -1,0 +1,10 @@
+  # Custom helm options
+namespace: suseai
+
+helm:
+  helmSecretName: basic-auth-secret
+  helmSecretNameForPaths: basic-auth-secret
+  ociRegistry:
+    authSecretName: application-collection
+    insecureSkipTLS: true
+    reference: https://apps.rancher.io/

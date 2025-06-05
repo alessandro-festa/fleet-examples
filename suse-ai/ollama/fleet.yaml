@@ -2,12 +2,12 @@
 namespace: suseai
 
 helm:
-  helmSecretName: basic-auth-secret
-  ociRegistry:
-    authSecretName: application-collection
-    basicHTTP: false
+#   helmSecretName: basic-auth-secret
+#   ociRegistry:
+#     authSecretName: application-collection
+#     basicHTTP: true
 
-  chart: "oci://dp.apps.rancher.io/charts/ollama"
+  chart: "https://apps.rancher.io/applications/ollama"
   version: "1.16.0"
  
   valuesFiles:
