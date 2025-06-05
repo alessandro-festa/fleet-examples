@@ -4,26 +4,26 @@ global:
 image:
   registry: dp.apps.rancher.io
   repository: containers/open-webui
-  tag: 0.5.14
-
-  #registry: ghcr.io
-  #repository: open-webui/open-webui
-  #tag: main
+  tag: 0.6.9
 
   # registry: ghcr.io
   # repository: open-webui/open-webui
   # tag: main
-  # repository: ghcr.io/open-webui/open-webui
-  # tag: 0.5.10
+
   pullPolicy: IfNotPresent
 ollamaUrls:
-- http://suseai-nv-ollama.suseai.svc.cluster.local:11434
+- http://suseai-suse-ai-ollama.suseai.svc.cluster.local:11434
 persistence:
   storageClass: local-path
 ollama:
   enabled: false
 pipelines:
-  enabled: true
+  enabled: false
+  specs:
+    image:
+      registry: dp.apps.rancher.io
+      repository: containers/open-webui-pipelines
+      tag: 0.20250329.151219
   persistence:
     enabled: false
     storageClass: local-path
@@ -37,9 +37,10 @@ ingress:
   host: ollama
   tls: true
 service:
-  type: NodePort
+  type: LoadBalancer
   annotations: {}
-  port: 80
+  port: 8000
+  targetPort: 80
   containerPort: 8080
   nodePort: 31000
   labels: {}
@@ -47,8 +48,11 @@ service:
 # -- OpenAI base API URL to use. Defaults to the Pipelines service endpoint when Pipelines are enabled, and "https://api.openai.com/v1" if Pipelines are not enabled and this value is blank
 openaiBaseApiUrl: ""
 # -- Env vars added to the Open WebUI deployment. Most up-to-date environment variables can be found here: https://docs.openwebui.com/getting-started/env-configuration/
+
 extraEnvVars:
   # -- Default API key value for Pipelines. Should be updated in a production deployment, or be changed to the required API key if not using Pipelines
+- name: ENV
+  value: "dev"
 - name: OPENAI_API_KEY
   value: "0p3n-w3bu!"
 - name: DEFAULT_MODELS
@@ -59,9 +63,12 @@ extraEnvVars:
   value: "SUSE AI"
 - name: GLOBAL_LOG_LEVEL
   value: INFO
-- name: RAG_EMBEDDING_MODEL
-  value: "sentence-transformers/all-MiniLM-L6-v2"
 - name: VECTOR_DB
   value: "milvus"
 - name: MILVUS_URI
-  value: http://suseai-nv-milvus.suseai.svc.cluster.local:19530
+  value: http://suseai-suse-ai-milvus.suseai.svc.cluster.local:19530
+
+
+
+
+
