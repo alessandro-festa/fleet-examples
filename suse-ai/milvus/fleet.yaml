@@ -6,7 +6,7 @@ helm:
   # ociRegistry:
   #   authSecretName: application-collection
   #   basicHTTP: true
-  chart: "https://apps.rancher.io/applications/milvus"
+  chart: "https://dp.apps.rancher.io/applications/milvus"
   version: "4.2.2"
 
   valuesFiles:
