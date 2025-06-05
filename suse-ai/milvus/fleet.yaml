@@ -2,7 +2,7 @@ namespace: suseai
 
 # Custom helm options
 helm:
-  # helmSecretName: basic-auth-secret
+  helmSecretName: basic-auth-secret
   ociRegistry:
     authSecretName: application-collection
     basicHTTP: false
