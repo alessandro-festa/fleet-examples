@@ -7,7 +7,7 @@ helm:
   #   reference: https://dp.apps.rancher.io/v2/
   #   authSecretName: application-collection
   #   basicHTTP: true
-  chart: "https://dp.apps.rancher.io/applications/open-webui"
+  chart: "dp.apps.rancher.io/charts/open-webui"
   version: "5.16.0"  
   valuesFiles:
     - owui-values.yaml
