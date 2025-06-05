@@ -3,9 +3,9 @@ namespace: suseai
 # Custom helm options
 helm:
   # helmSecretName: basic-auth-secret
-  # ociRegistry:
-  #   authSecretName: application-collection
-  #   basicHTTP: true
+  ociRegistry:
+    authSecretName: application-collection
+    basicHTTP: true
   chart: "dp.apps.rancher.io/charts/milvus"
   version: "4.2.2"
 
