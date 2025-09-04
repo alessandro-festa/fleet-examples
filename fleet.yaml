@@ -5,7 +5,7 @@ metadata:
 spec:
   repo: "https://github.com/alessandro-festa/demo-test"
   paths:
-  - fleet-examples/charts
+  - fleet-examples/appco
   values:
     global:
       imagePullSecrets: [ "application-collection" ]

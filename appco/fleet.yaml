@@ -1,0 +1,39 @@
+defaultNamespace: suseai
+helm:
+  releaseName: milvus
+  chart: "oci://dp.apps.rancher.io/charts/milvus"
+  version: "4.2.2"
+  force: false
+  timeoutSeconds: 0
+  targetNamespace: suseai
+  values:
+    global:
+      imagePullSecrets: [ "application-collection" ]
+---
+defaultNamespace: suseai
+helm:
+  releaseName: ollama
+  chart: "dp.apps.rancher.io/charts/ollama"
+  version: "1.26.0"
+  force: false
+  timeoutSeconds: 0
+  targetNamespace: suseai
+  values:
+    global:
+      imagePullSecrets: [ "application-collection" ]
+  valuesFiles:
+    - ollama-values.yaml
+---
+defaultNamespace: suseai
+helm:
+  releaseName: open-webui
+  chart: "dp.apps.rancher.io/charts/open-webui"
+  version: "7.2.0"
+  force: false
+  timeoutSeconds: 0
+  targetNamespace: suseai
+  values:
+    global:
+      imagePullSecrets: [ "application-collection" ]
+  valuesFiles:
+    - owui-values.yaml
