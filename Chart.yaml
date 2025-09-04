@@ -20,14 +20,14 @@ dependencies:
     version: 7.2.0
     repository: oci://dp.apps.rancher.io/charts
     condition: open-webui.enabled
-  - name: pytorch
-    version: 0.2.0
-    repository: oci://dp.apps.rancher.io/charts
-    condition: pytorch.enabled
-  - name: mlflow
-    version: 3.3.2
-    repository: oci://dp.apps.rancher.io/charts
-    condition: mlflow.enabled
+  # - name: pytorch
+  #   version: 0.2.0
+  #   repository: oci://dp.apps.rancher.io/charts
+  #   condition: pytorch.enabled
+  # - name: mlflow
+  #   version: 3.3.2
+  #   repository: oci://dp.apps.rancher.io/charts
+  #   condition: mlflow.enabled
 maintainers: # (optional)
   - name:  Alessandro Festa #The maintainers name (required for each maintainer)
     email: alessandro.festa1@suse.com #The maintainers email (optional for each maintainer)
