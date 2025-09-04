@@ -1,13 +1,12 @@
 kind: GitRepo
 apiVersion: fleet.cattle.io/v1alpha1
 metadata:
-  name: helm
+  name: appcotest
+  namespace: fleet-local
 spec:
-  repo: "https://github.com/alessandro-festa/demo-test"
+  repo: https://github.com/alessandro-festa/fleet-examples
+  branch: main
   paths:
-  - fleet-examples/appco
-  values:
-    global:
-      imagePullSecrets: [ "application-collection" ]
+  - appco
   valuesFiles:
     - values.yaml
