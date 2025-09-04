@@ -1,0 +1,33 @@
+apiVersion: v2 #The chart API version (required)
+name: suse-ai-pipeline #The name of the chart (required)
+version: 1.0.0 #A SemVer 2 version (required)
+#kubeVersion: A SemVer range of compatible Kubernetes versions (optional)
+description: A template to be used to generate SUSE AI pipelines #A single-sentence description of this project (optional)
+type: application #The type of the chart (optional)
+# keywords:
+#   - A list of keywords about this project (optional)
+home: https://suse.com/products/ai
+# sources:
+#   - A list of URLs to source code for this project (optional)
+dependencies: # A list of the chart requirements (optional)
+  - name: The name of the chart (nginx)
+    version: The version of the chart ("1.2.3")
+    repository: (optional) The repository URL ("https://example.com/charts") or alias ("@repo-name")
+    condition: (optional) A yaml path that resolves to a boolean, used for enabling/disabling charts (e.g. subchart1.enabled )
+    tags: # (optional)
+      - AI
+      - AIOps #Tags can be used to group charts for enabling/disabling together
+    import-values: # (optional)
+      - ImportValues holds the mapping of source values to parent key to be imported. Each item can be a string or pair of child/parent sublist items.
+    alias: (optional) Alias to be used for the chart. Useful when you have to add the same chart multiple times
+maintainers: # (optional)
+  - name:  Alessandro Festa #The maintainers name (required for each maintainer)
+    email: alessandro.festa1@suse.com #The maintainers email (optional for each maintainer)
+  - url: https://www.suse.com/
+    name: SUSE LLC
+    # url: A URL for the maintainer (optional for each maintainer)
+icon: https://apps.rancher.io/logos/suse-ai-deployer.png #A URL to an SVG or PNG image to be used as an icon (optional).
+appVersion: "1.0.0" #The version of the app that this contains (optional). Needn't be SemVer. Quotes recommended.
+# deprecated: Whether this chart is deprecated (optional, boolean)
+# annotations:
+#   example: A list of annotations keyed by name (optional).
