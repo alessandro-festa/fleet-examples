@@ -1,4 +1,8 @@
 defaultNamespace: suseai
+spec:
+  repo: https://github.com/rancher/fleet-examples
+  paths:
+  - charts
 helm:
   releaseName: suse-ai
   chart: "."
