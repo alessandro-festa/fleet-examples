@@ -4,9 +4,9 @@ metadata:
   name: helm
   namespace: fleet-local
 spec:
-  repo: https://github.com/rancher/fleet-examples
+  repo: https://github.com/alessandro-festa/demo-test
   paths:
-  - single-cluster/helm-multi-chart
+  - charts
 # helm:
 #   releaseName: suse-ai
 #   chart: "."
