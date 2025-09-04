@@ -1,0 +1,16 @@
+defaultNamespace: suseai
+helm:
+  releaseName: suse-ai
+  chart: "."
+  version: ""
+  force: false
+  timeoutSeconds: 0
+  targetNamespace: suseai
+  values:
+    global:
+      imagePullSecrets: [ "application-collection" ]
+  valuesFrom:
+    - configMapKeyRef:
+        name: suse-private-ai-values
+        namespace: suse-private-ai
+        key: values.yaml
