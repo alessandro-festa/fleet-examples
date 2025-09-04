@@ -1,0 +1,14 @@
+namespace: suseai
+helm:
+  releaseName: open-webui
+  chart: "oci://dp.apps.rancher.io/charts/milvus"
+  version: "4.2.2"
+  force: false
+  timeoutSeconds: 0
+  targetNamespace: suseai
+  values:
+    global:
+      imagePullSecrets: [ "application-collection" ]
+  valuesFiles:
+    - milvus-values.yaml
+  

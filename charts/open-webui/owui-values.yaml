@@ -4,7 +4,7 @@ global:
 image:
   registry: dp.apps.rancher.io
   repository: containers/open-webui
-  tag: 0.6.9
+  tag: 0.6.18
 
   # registry: ghcr.io
   # repository: open-webui/open-webui

@@ -1,0 +1,17 @@
+defaultNamespace: suseai
+helm:
+  releaseName: open-webui
+  chart: "dp.apps.rancher.io/charts/ollama"
+  version: "1.26.0"
+  force: false
+  timeoutSeconds: 0
+  targetNamespace: suseai
+  values:
+    global:
+      imagePullSecrets: [ "application-collection" ]
+  valuesFiles:
+    - ollama-values.yaml
+
+
+
+  

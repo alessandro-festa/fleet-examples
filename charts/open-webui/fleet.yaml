@@ -1,0 +1,16 @@
+defaultNamespace: suseai
+helm:
+  releaseName: open-webui
+  chart: "dp.apps.rancher.io/charts/open-webui"
+  version: "7.2.0"
+  force: false
+  timeoutSeconds: 0
+  targetNamespace: suseai
+  values:
+    global:
+      imagePullSecrets: [ "application-collection" ]
+  valuesFiles:
+    - owui-values.yaml
+ 
+
+  
