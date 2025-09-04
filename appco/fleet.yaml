@@ -1,39 +1,53 @@
-defaultNamespace: suseai
-helm:
-  releaseName: milvus
-  chart: "oci://dp.apps.rancher.io/charts/milvus"
-  version: "4.2.2"
-  force: false
-  timeoutSeconds: 0
-  targetNamespace: suseai
-  values:
-    global:
-      imagePullSecrets: [ "application-collection" ]
+apiVersion: fleet.cattle.io/v1alpha1
+kind: HelmOp
+metadata:
+  name: milvus
+  namespace: "fleet-local"
+spec:
+  helm:
+    releaseName: milvus
+    repo: ""
+    chart: "oci://dp.apps.rancher.io/charts/milvus"
+    version: '4.2.2'
+  namespace: suseai
+  helmSecretName: basic-auth-secret
+  insecureSkipTLSVerify: false
+  valuesFiles:
+    - milvus-values.yaml
 ---
-defaultNamespace: suseai
-helm:
-  releaseName: ollama
-  chart: "dp.apps.rancher.io/charts/ollama"
-  version: "1.26.0"
-  force: false
-  timeoutSeconds: 0
-  targetNamespace: suseai
-  values:
-    global:
-      imagePullSecrets: [ "application-collection" ]
+
+apiVersion: fleet.cattle.io/v1alpha1
+kind: HelmOp
+metadata:
+  name: ollama
+  namespace: "fleet-local"
+spec:
+  helm:
+    releaseName: ollama
+    repo: ""
+    chart: "dp.apps.rancher.io/charts/ollama"
+    version: "1.26.0"
+  namespace: suseai
+  helmSecretName: basic-auth-secret
+  insecureSkipTLSVerify: false
   valuesFiles:
     - ollama-values.yaml
+
 ---
-defaultNamespace: suseai
-helm:
-  releaseName: open-webui
-  chart: "dp.apps.rancher.io/charts/open-webui"
-  version: "7.2.0"
-  force: false
-  timeoutSeconds: 0
-  targetNamespace: suseai
-  values:
-    global:
-      imagePullSecrets: [ "application-collection" ]
+
+apiVersion: fleet.cattle.io/v1alpha1
+kind: HelmOp
+metadata:
+  name: open-webui
+  namespace: "fleet-local"
+spec:
+  helm:
+    releaseName: open-webui
+    repo: ""
+    chart: "dp.apps.rancher.io/charts/open-webui"
+    version: "7.2.0"
+  namespace: suseai
+  helmSecretName: basic-auth-secret
+  insecureSkipTLSVerify: false
   valuesFiles:
     - owui-values.yaml
