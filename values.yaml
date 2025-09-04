@@ -29,8 +29,6 @@ open-webui:
     enabled: true
     size: 20Gi
     storageClass: local-path
-  ollama:
-    enabled: false
   pipelines:
     enabled: false
     extraEnvVars: []
