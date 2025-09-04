@@ -1,0 +1,48 @@
+global:
+  imagePullSecrets:
+  - application-collection
+
+image:
+  registry: dp.apps.rancher.io
+  repository: containers/ollama
+  tag: 0.11.4
+  pullPolicy: IfNotPresent
+
+ingress:
+  enabled: false
+service:
+  nodePort: 31434
+  type: NodePort
+persistentVolume:
+  storageClass: local-path
+
+ollama: 
+  # -- List of models to pull at container startup
+  models:
+    pull:
+      - qwen3:0.6b
+    # create:
+    #   - name: suseai-k8s
+    #     template: |
+    #       FROM gemma3:1b-it-qat
+    #       # sets the temperature to 1 [higher is more creative, lower is more coherent]
+    #       PARAMETER temperature 1
+    #       # sets the context window size to 4096, this controls how many tokens the LLM can use as context to generate the next token
+    #       PARAMETER num_ctx 4096
+
+    #       # sets a custom system message to specify the behavior of the chat assistant
+    #       SYSTEM """ You are an advanced RBAC assistant for Rancher and Kubernetes environments. 
+    #       Your role is to provide tailored recommendations for RBAC configurations, cluster access, 
+    #       and observability settings based on the following context and inputs. """
+
+    #       MESSAGE user Is there any pod in a non healthy status?
+    #       MESSAGE assistant yes, here's a list of pods in each namespace that are not in healthy status
+    #       MESSAGE user Can you list namespaces I have in my cluster?
+    #       MESSAGE assistant yes, here it is the list of namespaces
+    # run: 
+    #   - suseai-k8s
+
+
+
+
+   
