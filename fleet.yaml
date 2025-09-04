@@ -2,23 +2,12 @@ kind: GitRepo
 apiVersion: fleet.cattle.io/v1alpha1
 metadata:
   name: helm
-  namespace: fleet-local
 spec:
-  repo: https://github.com/alessandro-festa/demo-test
+  repo: "https://github.com/alessandro-festa/demo-test"
   paths:
-  - charts
-# helm:
-#   releaseName: suse-ai
-#   chart: "."
-#   version: ""
-#   force: false
-#   timeoutSeconds: 0
-#   targetNamespace: suseai
-#   values:
-#     global:
-#       imagePullSecrets: [ "application-collection" ]
-#   valuesFrom:
-#     - configMapKeyRef:
-#         name: suse-private-ai-values
-#         namespace: suse-private-ai
-#         key: values.yaml
+  - fleet-examples/charts
+  values:
+    global:
+      imagePullSecrets: [ "application-collection" ]
+  valuesFiles:
+    - values.yaml
